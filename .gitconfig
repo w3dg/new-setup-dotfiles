@@ -1,0 +1,42 @@
+[core]
+	editor = micro
+	safecrlf = false
+  pager = delta # delta
+[user]
+	name = w3dg
+	email = 51162936+w3dg@users.noreply.github.com
+	signingkey = 28B9967BD135781D
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[credential]
+	helper = wincred
+[fetch]
+	prune = true
+[format]
+	pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
+[commit]
+	gpgsign = true
+
+# delta
+[include]
+	path = ~/.catppuccin.gitconfig
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+
+[delta]
+    # features = decorations
+	features = catppuccin-mocha
+[delta "interactive"]
+    keep-plus-minus-markers = false
+
+[delta "decorations"]
+    commit-decoration-style = blue ol
+    commit-style = raw
+    file-style = omit
+    hunk-header-decoration-style = blue box
+    hunk-header-file-style = red
+    hunk-header-line-number-style = "#067a00"
+    hunk-header-style = file line-number syntax

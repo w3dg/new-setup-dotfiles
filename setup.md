@@ -100,6 +100,11 @@ Get npm global packages
 sed -e "s/\/.*//g" -e "s/^$//g"  -e "s/├── //g" -e "s/└── //g" -e "s/@.*//g" npm-global-packages.txt | xargs npm i -g
 ```
 
+### Setup terminator and its config
+
+See [Terminator config with catppuccin](./terminator.config)
+
+
 ## VSCode
 
 Extensions

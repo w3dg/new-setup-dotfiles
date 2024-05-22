@@ -57,6 +57,7 @@ ripgrep
 speedtest-cli
 trash-cli
 whois
+yt-dlp
 zoxide
 ```
 
@@ -103,7 +104,6 @@ sed -e "s/\/.*//g" -e "s/^$//g"  -e "s/├── //g" -e "s/└── //g" -e "s
 ### Setup terminator and its config
 
 See [Terminator config with catppuccin](./terminator.config)
-
 
 ## VSCode
 
@@ -433,6 +433,7 @@ See [other software](./install-other-software.md)
 ## Software 
 
 - auto-cpufreq, thermald
+- pandoc, eisvogel template
 - Discord
 - Slack
 - Notion / notion-snap-reborn packaged as a snap

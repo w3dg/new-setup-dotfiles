@@ -4,13 +4,13 @@
 # w3dg - 2024, May 22
 #####
 
-BASEDIR=$(dirname $0)
+BASEDIR=$(pwd)
 
 # Update and upgrade your base system
 sudo apt update -y && sudo apt upgrade -y
 
 # Install basic necessities
-sudo apt install git vim wget curl
+sudo apt install -y  git vim wget curl
 
 # Run linking script for linking up dotfiles
 
@@ -19,13 +19,20 @@ bash $BASEDIR/link.sh
 # put expected file for git diff decorations 
 cp $BASEDIR/.catppuccin.gitconfig $HOME
 
-# Install Nerd Fonts
+# Install Fira Code Nerd Font
+curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.tar.xz
+mv $BASEDIR/FiraCode.tar.xz /tmp
+cd /tmp
+tar xvf FiraCode.tar.xz
 
-# ??????????????????????????
+sudo mv *ttf /usr/share/fonts/truetype
+sudo fc-cache -f -v
+
+cd $BASEDIR
 
 # Install zsh, ohmyzsh, powerlevel10k, zsh-autosuggestions, zsh-syntax-highlighting
-sudo apt install zsh
-# Get Ohmyzsh
+sudo apt install -y zsh
+# Get Ohmyzsh, this also changes default shell to zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 # Get powerlevel10k for ohmyzsh
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
@@ -52,8 +59,15 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 xargs brew install < $BASEDIR/Brewfile
 
-# Install fzf
+# Set bat themes https://github.com/catppuccin/bat
+mkdir -p "$(bat --config-dir)/themes"
+wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Latte.tmTheme
+wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Frappe.tmTheme
+wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Macchiato.tmTheme
+wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
+bat cache --build
 
+# Install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
 bash $HOME/.fzf/install
 # automatically checks and adds necessary additions to shell scripts, but we did that before, at this point it should be there
@@ -84,7 +98,7 @@ nvm use stable
 sed -e "s/\/.*//g" -e "s/^$//g"  -e "s/├── //g" -e "s/└── //g" -e "s/@.*//g" $BASEDIR/npm-global-packages.txt | xargs npm i -g
 
 # Install terminator
-sudo apt install terminator
+sudo apt install -y terminator
 
 # copy over terminator config
 mkdir -p $HOME/.config/terminator

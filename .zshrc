@@ -1,3 +1,6 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
@@ -110,8 +113,6 @@ export LANG=en_US.UTF-8
 fortune | cowsay -f tux
 #---
 
-
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -125,6 +126,7 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 setopt HIST_IGNORE_SPACE # ignore commands starting with space for sensitive stuff
+export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 
 source ~/.bash/exports.bash        # Exports
 source ~/.bash/functions.bash      # Custom functions

@@ -14,16 +14,8 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#installation
 ZSH_THEME="powerlevel10k/powerlevel10k"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
-
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
@@ -37,7 +29,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
+DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -145,6 +137,10 @@ export GPG_TTY=$(tty)
 
 alias reload="source ~/.zshrc"
 alias glog='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset" --date=short' # glods
+
+# overriding git aliases from omz
+alias gcl="git clone"
+alias gcld="git clone --depth=1"  # for repos with large commit history, which i dont need
 
 # alias pandock='docker run --rm -v "$(pwd):/data" -u $(id -u):$(id -g) pandoc/extra'
 # Usage

@@ -1,8 +1,10 @@
 bat
 cmatrix
 cowsay
+dust
 exiftool
 eza
+fastfetch
 fd
 ffmpeg
 fortune
@@ -10,6 +12,7 @@ git-delta
 glow
 go
 httpie
+hyperfine
 lolcat
 ripgrep
 speedtest-cli

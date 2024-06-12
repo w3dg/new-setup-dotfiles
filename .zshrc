@@ -1,6 +1,10 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# https://askubuntu.com/questions/716535/zsh-suggesting-what-packages-to-install
+# omz has a plugin already for this
+# source /etc/zsh_command_not_found
+
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
@@ -12,9 +16,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 
-ZSH_THEME="robbyrussell"
-# ZSH_THEME="lambda"
-# ZSH_THEME="mh"
+ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="robbyrussell"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 # Uncomment the following line to use hyphen-insensitive completion.
@@ -72,7 +75,7 @@ DISABLE_MAGIC_FUNCTIONS="true"
 # Make sure syntax highlighting theme loads before the plugin
 source ~/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git command-not-found  zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -143,3 +146,13 @@ alias gcld="git clone --depth=1"  # for repos with large commit history, which i
 # alias sudopandoc='sudo docker run --rm -v "$(pwd):/data" -u $(id -u):$(id -g) pandoc/extra'
 
 eval "$(zoxide init zsh)"
+
+# Set Pure Prompt
+# https://github.com/sindresorhus/pure#install
+# 
+# fpath+=($HOME/.zsh/pure)
+# autoload -U promptinit; promptinit
+# prompt pure
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

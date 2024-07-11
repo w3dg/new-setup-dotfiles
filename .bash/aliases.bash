@@ -20,7 +20,7 @@ alias l.='/usr/bin/ls -A | grep "^\."'
 # clear all history ; even from the current session; close the session to get rid of all persistence
 alias historyclearall="/usr/bin/cat /dev/null > ~/.bash_history && history -c && exit"
 alias size="du -hcs ."
-alias man='tldr'
+# alias man='tldr'
 alias total_files='ls -l | wc -l'
 alias tldr='tldr -t ocean'
 alias cl="clear"
@@ -82,6 +82,11 @@ alias -- -="cd -"
 # Yt-dlp download best quality audio and video merge them into mp4
 # Requires ffmpeg
 alias yt-dlp="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4'"
+# yt-dlp download an audio only version
+alias yt-dlp-audio="yt-dlp -f bestaudio -x --audio-format mp3 --audio-quality 0"
 
 # https://www.npmjs.com/package/trash-cli
 alias rm='trash'
+
+alias nf="neofetch"
+alias ff="fastfetch"

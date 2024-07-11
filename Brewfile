@@ -13,10 +13,12 @@ glow
 go
 httpie
 hyperfine
+imagemagick
 lolcat
 ripgrep
 speedtest-cli
 trash-cli
+valgrind
 whois
 yt-dlp
 zoxide

@@ -14,8 +14,8 @@ export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear:ll:sl:cl" # Dont record so
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # FZF
-# export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
-# export FZF_DEFAULT_OPTS='--layout=reverse --keep-right'
+export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
+export FZF_DEFAULT_OPTS='--layout=reverse --keep-right'
 
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
@@ -24,10 +24,14 @@ export FZF_DEFAULT_OPTS=" \
 --layout=reverse --keep-right"
 
 # Bat themes
-export BAT_THEME="Catppuccin Mocha"
+export BAT_THEME="ansi"
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # micro theme catpuccin https://github.com/catppuccin/micro
-export "MICRO_TRUECOLOR=1"
+export MICRO_TRUECOLOR=1
+
+# jdk
+export JAVA_HOME="/usr/lib/jvm/jdk-21-oracle-x64/"
+export PATH=$PATH:$JAVA_HOME/bin

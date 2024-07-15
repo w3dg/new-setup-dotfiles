@@ -10,7 +10,7 @@ BASEDIR=$(pwd)
 sudo apt update -y && sudo apt upgrade -y
 
 # Install basic necessities
-sudo apt install -y  git vim wget curl
+sudo apt install -y  git vim wget curl neovim
 
 # Run linking script for linking up dotfiles
 
@@ -21,9 +21,15 @@ cp $BASEDIR/.catppuccin.gitconfig $HOME
 
 # Install Fira Code Nerd Font
 curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.tar.xz
+curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CommitMono.tar.xz
+
 mv $BASEDIR/FiraCode.tar.xz /tmp
+mv $BASEDIR/CommitMono.tar.xz /tmp
+
 cd /tmp
+
 tar xvf FiraCode.tar.xz
+tar xvf CommitMono.tar.xz
 
 sudo mv *ttf /usr/share/fonts/truetype
 sudo fc-cache -f -v
@@ -34,15 +40,12 @@ cd $BASEDIR
 sudo apt install -y zsh
 # Get Ohmyzsh, this also changes default shell to zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-# Get powerlevel10k for ohmyzsh
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-# theme should already be set in ~/.zshrc
-# ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# Install syntax highlighting
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+# Install fast syntax highlighting
+git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
+
 # Install auto-suggestions
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 # Add catppuccin syntax highlighting for zsh
 cp $BASEDIR/catppuccin_mocha-zsh-syntax-highlighting.zsh $HOME
@@ -78,8 +81,6 @@ curl https://getmic.ro | bash
 # move it to bin for systemwide
 sudo mv -i ./micro /usr/bin
 
-# p10k prompt should be linked automatically above
-
 # Setup micro, make a directory if not exists, and copy recursively settings and colorschemes
 mkdir -p $HOME/.config/micro
 cp -R $BASEDIR/micro/* $HOME/.config/micro
@@ -105,6 +106,31 @@ sudo apt install -y terminator
 mkdir -p $HOME/.config/terminator
 cp $BASEDIR/terminator.config $HOME/.config/terminator/config
 
+sudo apt install wl-clipboard  # wl-copy for wayland https://superuser.com/questions/1189467/how-to-copy-text-to-the-clipboard-when-using-wayland
+
+########################## OTHER SOFTWARE #########################
+
+## Install snaps
+
+echo "Installing Snap and snaps - mailspring, notion, telegram"
+sudo apt install snapd
+
+sudo snap install mailspring notion-snap-reborn telegram-desktop
+
+echo "Installing Flatpaks, RESTART NEEDED LATER TO MANUALLY INSTALL FLATPAKS"
+
+sudo apt install flatpak
+sudo apt install gnome-software-plugin-flatpak
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+
+## Restart needed ##
+## install dconf-editor, discord, stretchly, fedora media writer as flatpaks
+# ca.desrt.dconf-editor com.discordapp.Discord net.hovancik.Stretchly org.fedoraproject.MediaWriter
+
+# OBS Studio
+sudo apt install obs-studio
+
 # Install Pandoc and Eisvogel
 
 sudo apt install pandoc texlive
@@ -112,3 +138,7 @@ sudo apt install pandoc texlive
 wget "https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex"
 mkdir -p $HOME/.local/share/pandoc/templates
 mv $BASEDIR/eisvogel.tex $HOME/.local/share/pandoc/templates/eisvogel.tex
+
+## VSCODE https://code.visualstudio.com/
+# GOOGLE CHROME https://www.google.com/chrome/
+# TRANSMISSION https://transmissionbt.com/download

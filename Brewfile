@@ -17,6 +17,7 @@ imagemagick
 lolcat
 ripgrep
 speedtest-cli
+starship
 trash-cli
 valgrind
 whois

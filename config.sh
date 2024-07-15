@@ -96,7 +96,7 @@ nvm install stable
 nvm use stable
 
 # install global npm packages
-sed -E -e "s/├── //g" -e "s/└── //g" -e "s/^$//g" -e "s/^\/.*//g" -e "s/@[0-9]+\.[0-9]+\.[0-9]+//g" $BASEDIR/npm-global-packages.txt| xargs -I{} echo npm i {}@latest
+sed -E -e "s/├── //g" -e "s/└── //g" -e "s/^$//g" -e "s/^\/.*//g" -e "s/@[0-9]+\.[0-9]+\.[0-9]+//g" $BASEDIR/npm-global-packages.txt| xargs -I{} echo npm i -g {}@latest
 
 # Install terminator
 sudo apt install -y terminator

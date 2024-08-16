@@ -17,11 +17,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 export FZF_DEFAULT_OPTS='--layout=reverse --keep-right'
 
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
---color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
---color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
---layout=reverse --keep-right"
+export FZF_DEFAULT_OPTS="--layout=reverse --keep-right"
 
 # Bat themes
 export BAT_THEME="ansi"

@@ -12,7 +12,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME="vercel"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 # Uncomment the following line to use hyphen-insensitive completion.
@@ -152,4 +152,4 @@ eval "$(zoxide init zsh)"
 
 # Starship Prompt with tokyonight config
 # https://starship.rs/presets/tokyo-night
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"

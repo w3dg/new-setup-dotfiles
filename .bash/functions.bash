@@ -89,8 +89,18 @@ cd_with_fzf() {
 	cd "$(fd -t d --maxdepth 3 --exclude node_modules --exclude .git | fzf --query=$1)"
 }
 
+cd_with_fzf_home() {
+    # cd $HOME && cd "$(fd -t d | fzf)"
+	cd $HOME && cd "$(fd -t d --maxdepth 3 --exclude node_modules --exclude .git | fzf --query=$1)"
+}
+
+
 cdf() {
 	cd_with_fzf $1
+}
+
+cdfh() {
+	cd_with_fzf_home $1
 }
 
 # Qickly make a backup of a file

@@ -39,7 +39,7 @@ cd $BASEDIR
 # Install zsh, ohmyzsh, powerlevel10k, zsh-autosuggestions, zsh-syntax-highlighting
 sudo apt install -y zsh
 # Get Ohmyzsh, this also changes default shell to zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # Install fast syntax highlighting
 git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
@@ -48,7 +48,7 @@ git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZS
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 # Add catppuccin syntax highlighting for zsh
-cp $BASEDIR/catppuccin_mocha-zsh-syntax-highlighting.zsh $HOME
+# cp $BASEDIR/catppuccin_mocha-zsh-syntax-highlighting.zsh $HOME
 
 ## Install HomeBrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -83,7 +83,7 @@ sudo mv -i ./micro /usr/bin
 
 # Setup micro, make a directory if not exists, and copy recursively settings and colorschemes
 mkdir -p $HOME/.config/micro
-cp -R $BASEDIR/micro/* $HOME/.config/micro
+cp $BASEDIR/micro/* $HOME/.config/micro
 
 # Get NVM
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
@@ -97,7 +97,7 @@ nvm install stable
 nvm use stable
 
 # install global npm packages
-sed -E -e "s/├── //g" -e "s/└── //g" -e "s/^$//g" -e "s/^\/.*//g" -e "s/@[0-9]+\.[0-9]+\.[0-9]+//g" $BASEDIR/npm-global-packages.txt| xargs -I{} echo npm i -g {}@latest
+sed -E -e "s/├── //g" -e "s/└── //g" -e "s/^$//g" -e "s/^\/.*//g" -e "s/@[0-9]+\.[0-9]+\.[0-9]+//g" $BASEDIR/npm-global-packages.txt| xargs -I{} npm i -g {}@latest
 
 # Install terminator
 sudo apt install -y terminator
@@ -106,7 +106,7 @@ sudo apt install -y terminator
 mkdir -p $HOME/.config/terminator
 cp $BASEDIR/terminator.config $HOME/.config/terminator/config
 
-sudo apt install wl-clipboard  # wl-copy for wayland https://superuser.com/questions/1189467/how-to-copy-text-to-the-clipboard-when-using-wayland
+# sudo apt install wl-clipboard  # wl-copy for wayland https://superuser.com/questions/1189467/how-to-copy-text-to-the-clipboard-when-using-wayland
 
 ########################## OTHER SOFTWARE #########################
 

@@ -3,6 +3,7 @@
 
 # Yarn PATH
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 # Load Up Some Cool ColorScripts!! https://gitlab.com/dwt1/shell-color-scripts
 # ~/code/repos/Color-Scripts/color-scripts/crunchbang-mini
 # Echo the current date in "Weekday, year-month-day" format
@@ -57,14 +58,14 @@ prompt_command() {
 export PROMPT_COMMAND=prompt_command
 
 # colors from https://robotmoon.com/bash-prompt-generator/
-# export PS1="\[\e[38;5;39m\]\u\[\e[38;5;45m\]@\[\e[38;5;51m\]\h \[\e[38;5;195m\]\w \[\033[0m\]$ " # Sea
+export PS1="\[\e[38;5;39m\]\u\[\e[38;5;45m\]@\[\e[38;5;51m\]\h \[\e[38;5;195m\]\w \[\033[0m\]$ " # Sea
 # export PS1="\[\e[38;5;33m\]\u\[\e[38;5;69m\]@\[\e[38;5;105m\]\h \[\e[38;5;141m\]\w \[\033[0m\]$ " # Twilight
 # export PS1="\[\e[38;5;34m\]\u\[\e[38;5;40m\]@\[\e[38;5;46m\]\h \[\e[38;5;154m\]\w \[\033[0m\]$ " # Emerald Green
 # export PS1='\n\[\e[01;36m\]\w\[\e[01;32m\] `echo $(__git_ps1 "git:(%s)")` \n❯\[\e[01;00m\] '
 
 # export PS1='🦄 \[\e[0;36m\]\[\e[0;36m\] \W\[\033[0;35m\]$(__git_ps1 " (%s)")\[\e[0m\]: '
 
-export PS1='\n $EMOJI \[\e[01;36m\]\w\[\e[01;33m\]$(__git_ps1 " (%s)") \[\e[38;5;182m\]|\[\e[01;00m\] '
+# export PS1='\n $EMOJI \[\e[01;36m\]\w\[\e[01;33m\]$(__git_ps1 " (%s)") \[\e[38;5;182m\]|\[\e[01;00m\] '
 export PS2="... "
 # ❯
 
@@ -103,3 +104,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+. "$HOME/.cargo/env"

@@ -94,13 +94,23 @@ cd_with_fzf_home() {
 	cd $HOME && cd "$(fd -t d --maxdepth 3 --exclude node_modules --exclude .git | fzf --query=$1)"
 }
 
-
 cdf() {
 	cd_with_fzf $1
 }
 
 cdfh() {
 	cd_with_fzf_home $1
+}
+
+cdfl() {
+	cd $HOME
+	FILEPATH=$(fd -t f . | fzf --query=$1)
+	# echo $FILEPATH | sed "s|$HOME||" # anything for the seperator to sed. File path will contain slashes so we use a different seperator
+	if [ $? -ne 0 ]; then
+		return
+	fi
+	DIR=`dirname ${FILEPATH} | sed "s|$HOME|~|"`
+	cd $DIR
 }
 
 # Qickly make a backup of a file

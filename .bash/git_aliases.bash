@@ -209,6 +209,11 @@ function grename() {
   fi
 }
 
+function gitcd() {
+  local TOP="`git rev-parse --show-cdup 2>/dev/null`" || return 1;
+  [ "$TOP" ] && cd "$TOP";
+}
+
 # alias ga='git add .'
 # alias gaa='git add .'
 # alias gcm='git commit -m '

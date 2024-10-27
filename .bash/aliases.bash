@@ -35,7 +35,7 @@ alias rm='rm -iIv'
 
 # Additional Programs replacing normal ones
 # bat is a rust utility similar to the cat(1) command. install via scoop or other package manager https://github.com/sharkdp/bat
-alias cat='bat' 
+alias cat='bat -p' 
 # https://micro-editor.github.io/
 alias mc='micro'
 alias m='micro'
@@ -90,3 +90,5 @@ alias rm='trash'
 
 alias nf="neofetch"
 alias ff="fastfetch"
+
+alias lg="lazygit"

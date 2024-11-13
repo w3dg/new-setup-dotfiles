@@ -151,14 +151,6 @@ alias glog='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgre
 alias gcl="git clone"
 alias gcld="git clone --depth=1"  # for repos with large commit history, which i dont need
 
-# alias pandock='docker run --rm -v "$(pwd):/data" -u $(id -u):$(id -g) pandoc/extra'
-# Usage
-# pandock example.md -o example.pdf --template eisvogel --listings
-# pandock example.md -o example-generated.pdf --from markdown+yaml_metadata_block+raw_html --template eisvogel --highlight-style  pygments
-
-# alias pandoc='docker run --rm -v "$(pwd):/data" -u $(id -u):$(id -g) pandoc/extra'
-# alias sudopandoc='sudo docker run --rm -v "$(pwd):/data" -u $(id -u):$(id -g) pandoc/extra'
-
 eval "$(zoxide init zsh)"
 
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -169,4 +161,7 @@ elif [ $XDG_SESSION_TYPE = 'wayland' ]; then
   alias clip="wl-copy"
 fi  
 
-# [[ -f ~/todo.md ]] && glow ~/todo.md
+fortune | cowsay -f tux
+
+[[ -f ~/todo.md ]] && glow ~/todo.md
+

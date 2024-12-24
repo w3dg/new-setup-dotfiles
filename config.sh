@@ -112,17 +112,15 @@ cp $BASEDIR/terminator.config $HOME/.config/terminator/config
 
 ## Install snaps
 
-echo "Installing Snap and snaps - mailspring, notion, telegram"
+echo "Installing Snap and snaps - mailspring, notion, calendar, telegram, slack"
 sudo apt install snapd
-
-sudo snap install mailspring notion-snap-reborn telegram-desktop
+sudo snap install mailspring notion-snap-reborn telegram-desktop slack notion-calendar-snap
 
 echo "Installing Flatpaks, RESTART NEEDED LATER TO MANUALLY INSTALL FLATPAKS"
 
 sudo apt install flatpak
 sudo apt install gnome-software-plugin-flatpak
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-
 
 ## Restart needed ##
 ## install dconf-editor, discord, stretchly, fedora media writer as flatpaks

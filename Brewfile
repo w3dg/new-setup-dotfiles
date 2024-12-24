@@ -16,8 +16,10 @@ hyperfine
 imagemagick
 lolcat
 ripgrep
+sevenzip
 speedtest-cli
 starship
+tokei
 trash-cli
 valgrind
 whois

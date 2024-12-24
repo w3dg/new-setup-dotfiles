@@ -12,7 +12,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # jaischeema traffic (from internet)
-ZSH_THEME="custom-vercel"
+# ZSH_THEME="custom-vercel"
+
 # ZSH_THEME="powerlevel10k/powerlevel10k"
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -21,6 +22,8 @@ ZSH_THEME="custom-vercel"
 # fpath+=($HOME/.zsh/pure)
 # autoload -U promptinit; promptinit
 # prompt pure
+
+eval "$(starship init zsh)"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"

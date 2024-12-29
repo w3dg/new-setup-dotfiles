@@ -1,52 +1,72 @@
+### Function extract for common file formats ###
+SAVEIFS=$IFS
+IFS=$(echo -en "\n\b")
+
 ### ARCHIVE EXTRACTION
-# usage: extract <file>
-ex()
-{
-  if [ -f "$1" ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1   ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
-      *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
-      *.deb)       ar x $1      ;;
-      *.tar.xz)    tar xf $1    ;;
-      *.tar.zst)   unzstd $1    ;;
-      *)           echo "'$1' cannot be extracted via ex()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
+# usage: ex <file>
+function ex {
+ if [ -z "$1" ]; then
+    # display usage if no parameters given
+    echo "Usage: ex <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz>"
+    echo "       extract <path/file_name_1.ext> [path/file_name_2.ext] [path/file_name_3.ext]"
+ else
+    for n in "$@"
+    do
+      if [ -f "$n" ] ; then
+          case "${n%,}" in
+            *.cbt|*.tar.bz2|*.tar.gz|*.tar.xz|*.tbz2|*.tgz|*.txz|*.tar)
+                         tar xvf "$n"       ;;
+            *.lzma)      unlzma ./"$n"      ;;
+            *.bz2)       bunzip2 ./"$n"     ;;
+            *.cbr|*.rar)       unrar x -ad ./"$n" ;;
+            *.gz)        gunzip ./"$n"      ;;
+            *.cbz|*.epub|*.zip)       unzip ./"$n"       ;;
+            *.z)         uncompress ./"$n"  ;;
+            *.7z|*.arj|*.cab|*.cb7|*.chm|*.deb|*.dmg|*.iso|*.lzh|*.msi|*.pkg|*.rpm|*.udf|*.wim|*.xar)
+                         7z x ./"$n"        ;;
+            *.xz)        unxz ./"$n"        ;;
+            *.exe)       cabextract ./"$n"  ;;
+            *.cpio)      cpio -id < ./"$n"  ;;
+            *.cba|*.ace)      unace x ./"$n"      ;;
+            *)
+                         echo "ex: '$n' - unknown archive method"
+                         return 1
+                         ;;
+          esac
+      else
+          echo "'$n' - file does not exist"
+          return 1
+      fi
+    done
+fi
+}
+
+IFS=$SAVEIFS
+
+# navigation
+up () {
+  local d=""
+  local limit="$1"
+
+  # Default to limit of 1
+  if [ -z "$limit" ] || [ "$limit" -le 0 ]; then
+    limit=1
+  fi
+
+  for ((i=1;i<=limit;i++)); do
+    d="../$d"
+  done
+
+  # perform cd. Show error if cd fails
+  if ! cd "$d"; then
+    echo "Couldn't go up $limit dirs.";
   fi
 }
+
 
 # Make a directory and cd into it all at once
 mkcd() {
   mkdir $1 && cd $1
-}
-
-# In JDK 11+ theres no need to do this separately, just `java filename.java`
-# Compile and run a given java file. Usage - `jrun filename.java`
-# One known caveat - if you have the file in a package, using this will remove that nested filepath. 
-# Use dirname and basename to get the correct filepath to javac. Also the `./` path has to be removed from the filepath if any.
-# I dont use this anymore hence, its `__`ed.
-__jrun() { 
-  if [ -f "$1" ]; then
-  local classname=`basename $1 .java`
-  javac $1 && java $classname
-  else echo "Usage - jrun filename.java . Either the file does not exist or you have not provided the correct file name"
-  fi
-}
-
-# JDK 11+
-# Compile and run a given java file. Useful for small programs. Usage - `jrun filename.java`
-jrun () {
-  java $1
 }
 
 # get a random emoji. Usage - `emoji`
@@ -73,14 +93,6 @@ up() {
      echo -e "\e[33m Running on a random port: $PORT \e[0m"
      python3 -m http.server $PORT
   fi
-
-  # if [ -n "$1" ]; then
-  # python -m http.server $1
-  # else 
-  # local PORT=$(($RANDOM+3000))
-  # echo -e "\e[33m[+] No port specified, running on a random port: $PORT \e[00m"
-  # python -m http.server $PORT
-  # fi
 }
 
 # Uses fzf, fd

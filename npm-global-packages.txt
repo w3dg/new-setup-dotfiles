@@ -14,4 +14,3 @@ tldr
 ts-node
 typescript
 vercel
-yarn

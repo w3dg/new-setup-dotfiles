@@ -7,6 +7,7 @@ eza
 fastfetch
 fd
 ffmpeg
+fnm
 fortune
 git-delta
 glow
@@ -14,6 +15,8 @@ go
 httpie
 hyperfine
 imagemagick
+lazydocker
+lazygit
 lolcat
 ripgrep
 sevenzip

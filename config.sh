@@ -88,13 +88,9 @@ cp $BASEDIR/micro/* $HOME/.config/micro
 # Get NVM
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
-# Load nvm in the current shell
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-# Get stable version of node
-nvm install stable
-nvm use stable
+# brew install fnm
+LATEST_NODE_MAJOR=$(fnm ls-remote | tail -1 | tr -d v | cut -d. -f1)
+fnm install $LATEST_NODE_MAJOR
 
 # install global npm packages
 sed -E -e "s/├── //g" -e "s/└── //g" -e "s/^$//g" -e "s/^\/.*//g" -e "s/@[0-9]+\.[0-9]+\.[0-9]+//g" $BASEDIR/npm-global-packages.txt| xargs -I{} npm i -g {}@latest
@@ -106,7 +102,7 @@ sudo apt install -y terminator
 mkdir -p $HOME/.config/terminator
 cp $BASEDIR/terminator.config $HOME/.config/terminator/config
 
-# sudo apt install wl-clipboard  # wl-copy for wayland https://superuser.com/questions/1189467/how-to-copy-text-to-the-clipboard-when-using-wayland
+sudo apt install wl-clipboard  # wl-copy for wayland https://superuser.com/questions/1189467/how-to-copy-text-to-the-clipboard-when-using-wayland
 
 ########################## OTHER SOFTWARE #########################
 

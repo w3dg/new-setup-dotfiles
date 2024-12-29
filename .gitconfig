@@ -19,14 +19,12 @@
 	gpgsign = true
 
 # delta
-[include]
-	path = ~/.catppuccin.gitconfig
 [interactive]
     diffFilter = delta --color-only --features=interactive
 
 [delta]
-    # features = decorations
-	features = catppuccin-mocha
+    features = decorations
+	# features = catppuccin-mocha
 [delta "interactive"]
     keep-plus-minus-markers = false
 

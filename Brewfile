@@ -18,12 +18,14 @@ imagemagick
 lazydocker
 lazygit
 lolcat
+numi-cli
 ripgrep
 sevenzip
 speedtest-cli
 starship
 tokei
 trash-cli
+uv
 valgrind
 whois
 yt-dlp

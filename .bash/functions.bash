@@ -147,3 +147,46 @@ cleangit () {
 color256() {
 	for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
 }
+
+# Python Virtual Env activations
+
+# source the closest virtualenv to pwd
+sv() {
+	if [ ! -z $VIRTUAL_ENV ]; then
+		deactivate # deactivate what venv is currently enabled
+	fi
+	PATH_TO_LOCAL_ACTIVATION_SCRIPT=$(\find -type f -iname "activate")
+	if [ ! -z $PATH_TO_LOCAL_ACTIVATION_SCRIPT ]; then
+		source $PATH_TO_LOCAL_ACTIVATION_SCRIPT
+		VENV_PARENT_DIR=$(dirname $(echo $VIRTUAL_ENV) | sed "s|$HOME|~|")
+		echo "Enabled Virtual Environment from $VENV_PARENT_DIR"
+	else
+		echo "Could not find activation script. Are you in the root directory with venv folder?"
+	fi
+}
+
+
+which_venv() {
+	if [ -z $VIRTUAL_ENV ]; then
+		echo "No virtual env set"
+	else
+		VENV_PARENT_DIR=$(dirname $(echo $VIRTUAL_ENV) | sed "s|$HOME|~|")
+		echo "Current Venv from $VENV_PARENT_DIR"
+	fi
+}
+
+wenv() {
+	which_venv
+}
+
+# Use zathura as pdf viewer
+zpdf() {
+	selection=$(fd -t f --glob \*.pdf | fzf)
+	if [  $? -ne 0 ]; then
+		return
+	fi
+	if [ -z $selection ]; then
+		return
+	fi
+	zathura "$selection"
+}

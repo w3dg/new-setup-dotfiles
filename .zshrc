@@ -143,5 +143,5 @@ elif [ $XDG_SESSION_TYPE = 'wayland' ]; then
   alias clip="wl-copy"
 fi  
 
-[[ $PWD = $HOME ]] && fortune | cowsay -f tux
-[[ $PWD = $HOME ]] && [[ -f ~/todo.md ]] && glow ~/todo.md
+[[ $PWD = $HOME ]] && fortune | cowsay -f tux || true
+[[ $PWD = $HOME ]] && [[ -f ~/todo.md ]] && glow ~/todo.md || true

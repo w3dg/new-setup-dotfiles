@@ -15,7 +15,7 @@ alias lls='ls'
 alias l.='/usr/bin/ls -A | grep "^\."' 
 
 # use eza for tree
-alias tree="eza -T"
+alias tree="eza -TF --icons"
 
 # clear all history ; even from the current session; close the session to get rid of all persistence
 alias historyclearall="/usr/bin/cat /dev/null > ~/.bash_history && history -c && exit"

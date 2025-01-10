@@ -11,6 +11,6 @@ These are my configuration files aka dotfiles
 ## Prompt using Starship + ZSH + Oh My Zsh
 
 <p align=center>
-  <img src="./assets/headerimage.png">
+  <img src="./assets/prompt.png">
 </p>
 

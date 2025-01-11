@@ -226,3 +226,4 @@ function gitcd() {
 # alias gss='git status -s'
 # alias grv='git remote -v'
 # alias gittree='git log --graph --full-history --all --pretty=format:"%h%x09%d%x20%s"'
+# alias gcz='git cz -a' # assuming you have commitizen installed and configured

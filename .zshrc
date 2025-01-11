@@ -110,6 +110,9 @@ function gitcd() {
   [ "$TOP" ] && cd "$TOP";
 }
 
+# Use commitizen for conventional git commits
+alias gcz="git cz -a"
+
 source ~/.bash/npm-completion.bash # npm completion
 source ~/.bash/pandoc-completion.bash # pandoc completion
 

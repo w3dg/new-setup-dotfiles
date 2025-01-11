@@ -1,5 +1,7 @@
 @antfu/ni
+commitizen
 corepack
+cz-conventional-changelog
 eslint
 gitignore
 imgur-uploader-cli

@@ -98,7 +98,7 @@ export LANG=en_US.UTF-8
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 setopt HIST_IGNORE_SPACE # ignore commands starting with space for sensitive stuff
-export HISTORY_IGNORE="(ls|ll|lsa|lls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
+export HISTORY_IGNORE="(ls|ll|lsa|lls|cd|pwd|exit|sudo reboot|history|cd -|cd ..|clear|cl)"
 
 source ~/.bash/exports.bash        # Exports
 source ~/.bash/functions.bash      # Custom functions
@@ -145,6 +145,7 @@ if [ $XDG_SESSION_TYPE = 'x11' ]; then
 elif [ $XDG_SESSION_TYPE = 'wayland' ]; then
   alias clip="wl-copy"
 fi  
+
 
 [[ $PWD = $HOME ]] && fortune | cowsay -f tux || true
 [[ $PWD = $HOME ]] && [[ -f ~/todo.md ]] && glow ~/todo.md || true

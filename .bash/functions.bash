@@ -44,7 +44,7 @@ fi
 IFS=$SAVEIFS
 
 # navigation
-up () {
+cdup () {
   local d=""
   local limit="$1"
 
@@ -189,4 +189,10 @@ zpdf() {
 		return
 	fi
 	zathura "$selection"
+}
+
+# unset the variable for history file so that the commands after invoking
+# this function will not be recorded
+privatesession() {
+	unset HISTFILE	
 }

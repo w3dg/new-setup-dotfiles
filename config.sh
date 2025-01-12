@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 #####
-# w3dg - 2024, May 22
+# w3dg - 2025, Jan 12
 #####
 
 BASEDIR=$(pwd)
@@ -18,6 +18,9 @@ bash $BASEDIR/link.sh
 
 # put expected file for git diff decorations 
 cp $BASEDIR/.catppuccin.gitconfig $HOME
+
+mkdir -p $HOME/.config/zathura
+cp $BASEDIR/.config/zathura/zathurarc $HOME/.config/zathura/zathurarc
 
 # Install Fira Code Nerd Font
 curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.tar.xz
@@ -89,11 +92,13 @@ cp $BASEDIR/micro/* $HOME/.config/micro
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
 # brew install fnm
+# enable fnm for session
+eval "$(fnm env --use-on-cd --shell zsh)"
 LATEST_NODE_MAJOR=$(fnm ls-remote | tail -1 | tr -d v | cut -d. -f1)
 fnm install $LATEST_NODE_MAJOR
 
 # install global npm packages
-sed -E -e "s/├── //g" -e "s/└── //g" -e "s/^$//g" -e "s/^\/.*//g" -e "s/@[0-9]+\.[0-9]+\.[0-9]+//g" $BASEDIR/npm-global-packages.txt| xargs -I{} npm i -g {}@latest
+while read package; do npm i -g ${package}; done < $BASEDIR/npm-global-packages.txt
 
 # Install terminator
 sudo apt install -y terminator
@@ -103,6 +108,9 @@ mkdir -p $HOME/.config/terminator
 cp $BASEDIR/terminator.config $HOME/.config/terminator/config
 
 sudo apt install wl-clipboard  # wl-copy for wayland https://superuser.com/questions/1189467/how-to-copy-text-to-the-clipboard-when-using-wayland
+
+# Zathura for pdf
+sudo apt install zathura
 
 ########################## OTHER SOFTWARE #########################
 

@@ -181,7 +181,7 @@ wenv() {
 
 # Use zathura as pdf viewer
 zpdf() {
-	selection=$(fd -t f --glob \*.pdf | fzf --query="$1")
+	selection=$(fd -I -t f --glob \*.pdf | fzf --query="$1")
 	if [  $? -ne 0 ]; then
 		return
 	fi

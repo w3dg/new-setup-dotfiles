@@ -81,11 +81,11 @@ up() {
   re='^[0-9]+$' # Whether it is a number
   if [[ $1 =~ $re ]] ; then
     # port can be within 0-65535 only
-    if ! [ $1 -ge 0 -a $1 -le 65535 ]; 
+    if ! [ $1 -ge 0 -a $1 -le 65535 ];
     then
       echo "Port number must be between 0 and 65535"
-      return 
-    fi  
+      return
+    fi
      python3 -m http.server $1
   else
      echo "[i] Empty Or Invalid Port Number Specified." >&2;
@@ -126,7 +126,7 @@ cdfl() {
 }
 
 # Qickly make a backup of a file
-back() { 
+back() {
 	cp "$1"{,.bak};
 }
 
@@ -188,11 +188,16 @@ zpdf() {
 	if [ -z $selection ]; then
 		return
 	fi
-	zathura "$selection"
+	zathura "$selection" &
+	disown
 }
 
 # unset the variable for history file so that the commands after invoking
 # this function will not be recorded
 privatesession() {
-	unset HISTFILE	
+	unset HISTFILE
+}
+
+update_global_npm_packages() {
+    npm list -g | sed -E -e 's|^/.*$||g' -e 's/├──//g' -e 's/└──//g' -e 's/@[0-9]+\.[0-9]+\.[0-9]+//g' | xargs npm i -g
 }

@@ -9,16 +9,20 @@ export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 export ZSH="$HOME/.oh-my-zsh"
-# ZSH_THEME="custom-vercel"
+# ZSH_THEME="robbyrussell"
 
-eval "$(starship init zsh)"
 # ZSH_THEME="powerlevel10k/powerlevel10k"
+# # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# # Initialization code that may require console input (password prompts, [y/n]
+# # confirmations, etc.) must go above this block; everything else may go below.
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
+#
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Set Pure Prompt https://github.com/sindresorhus/pure#install
-# fpath+=($HOME/.zsh/pure)
-# autoload -U promptinit; promptinit
-# prompt pure
+eval "$(starship init zsh)"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -77,14 +81,15 @@ DISABLE_MAGIC_FUNCTIONS="true"
 # Make sure syntax highlighting theme loads before the plugin
 # source ~/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
-plugins=(git command-not-found colored-man-pages zsh-autosuggestions fast-syntax-highlighting)
+plugins=(
+    git
+    command-not-found
+    colored-man-pages
+    zsh-autosuggestions
+    fast-syntax-highlighting
+)
 
 source $ZSH/oh-my-zsh.sh
-
-# User configuration
-if [ -f "$HOME/.cargo/env" ] ; then
-  source "$HOME/.cargo/env"
-fi
 
 export GOPATH="$HOME/go"
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -111,7 +116,7 @@ function gitcd() {
 }
 
 # Use commitizen for conventional git commits
-alias gcz="git cz -a"
+alias gcz="git cz"
 
 source ~/.bash/npm-completion.bash # npm completion
 source ~/.bash/pandoc-completion.bash # pandoc completion
@@ -119,7 +124,7 @@ source ~/.bash/pandoc-completion.bash # pandoc completion
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-# 
+#
 # nvm use stable 1>/dev/null
 
 # get latest major version number
@@ -131,7 +136,8 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 
 export GPG_TTY=$(tty)
 
-alias reload="source ~/.zshrc"
+# alias reload="source ~/.zshrc"
+alias reload="exec zsh"
 alias glog='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset" --date=short' # glods
 
 # overriding git aliases from omz
@@ -144,8 +150,9 @@ if [ $XDG_SESSION_TYPE = 'x11' ]; then
   alias clip="xclip -selection clipboard"
 elif [ $XDG_SESSION_TYPE = 'wayland' ]; then
   alias clip="wl-copy"
-fi  
+fi
 
 
-[[ $PWD = $HOME ]] && fortune | cowsay -f tux || true
+# [[ $PWD = $HOME ]] && fortune | cowsay -f tux || true
+[[ $PWD = $HOME ]] && fastfetch --config examples/20.jsonc || true
 [[ $PWD = $HOME ]] && [[ -f ~/todo.md ]] && glow ~/todo.md || true

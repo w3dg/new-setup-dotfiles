@@ -16,7 +16,7 @@ sudo apt install -y  git vim wget curl neovim
 
 bash $BASEDIR/link.sh
 
-# put expected file for git diff decorations 
+# put expected file for git diff decorations
 cp $BASEDIR/.catppuccin.gitconfig $HOME
 
 mkdir -p $HOME/.config/zathura
@@ -63,8 +63,15 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # brew list --installed-on-request
 
 # Install from brewfile
+# Temporarily increase system's file descriptor limit so that brew passes while installing lots of packages
+
+BEFORE_ULIMIT_CHANGE=$(ulimit -n)
+
+ulimit -n 65535
 
 xargs brew install < $BASEDIR/Brewfile
+
+ulimit -n $BEFORE_ULIMIT_CHANGE
 
 # Set bat themes https://github.com/catppuccin/bat
 mkdir -p "$(bat --config-dir)/themes"

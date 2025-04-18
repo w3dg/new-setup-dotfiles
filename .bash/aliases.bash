@@ -12,10 +12,10 @@ alias la='ls -A'
 alias sl='ls'
 alias lls='ls'
 # list all dotfiles
-alias l.='/usr/bin/ls -A | grep "^\."' 
+alias l.='/usr/bin/ls -A | grep "^\."'
 
 # use eza for tree
-alias tree="eza -TF --icons"
+alias tree="eza -TF --icons=auto"
 
 # clear all history ; even from the current session; close the session to get rid of all persistence
 alias historyclearall="/usr/bin/cat /dev/null > ~/.bash_history && history -c && exit"
@@ -38,7 +38,7 @@ alias mkdir='mkdir -pv'
 
 # Additional Programs replacing normal ones
 # bat is a rust utility similar to the cat(1) command. install via scoop or other package manager https://github.com/sharkdp/bat
-alias cat='bat -p' 
+alias cat='bat -p'
 # https://micro-editor.github.io/
 alias mc='micro'
 alias m='micro'
@@ -71,7 +71,8 @@ alias sublwt="subl $(alias wtsetting | cut  -d' ' -f3 | tr -d "'")"
 alias path='echo -e ${PATH//:/\\n}'
 
 ## NPM Project Aliases ##
-alias vitenew='npm create vite@latest'
+# alias vitenew='npm create vite@latest'
+alias vitenew='pnpm dlx create-vite@latest'
 
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."

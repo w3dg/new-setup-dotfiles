@@ -50,7 +50,10 @@ alias find='fd'
 # https://www.hanselman.com/blog/installing-httpie-http-for-humans-on-windows-great-for-aspnet-web-api-and-restful-json-services
 alias curl='http'
 # Alias wget to use httpie - Project home page - https://github.com/httpie/httpie/
-alias wget='http --download'
+# alias wget='http --download'
+
+# Aliasing wget to aria2 for downloads
+alias wget='aria2c'
 
 # Utility Aliases
 # Get your external IP

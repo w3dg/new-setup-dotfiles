@@ -129,6 +129,8 @@ sleep 2
 print_bold_yellow "Running brew upgrade"
 brew upgrade
 
+brew cleanup
+
 ulimit -n $BEFORE_ULIMIT_CHANGE
 
 print_bold_green "Running global node modules update"

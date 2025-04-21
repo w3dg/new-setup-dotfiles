@@ -2,7 +2,9 @@
 
 BASEDIR=$(pwd)
 
-DOTFILES=(.bash_profile .bashrc .catppuccin.gitconfig .gitconfig .gitignore .inputrc .npmrc .zshrc .bash .p10k.zsh bin .czrc .zshenv)
+DOTFILES=(.bash_profile .bashrc .catppuccin.gitconfig .gitconfig .gitignore .inputrc .npmrc .zshrc .bash .p10k.zsh bin .czrc .zshenv .config/starship.toml)
+
+mkdir -p $HOME/.config
 
 for dot in "${DOTFILES[@]}"; do
 	echo "Removing $HOME/$dot"

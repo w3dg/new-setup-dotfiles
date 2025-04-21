@@ -1,3 +1,4 @@
+aria2
 bat
 cmatrix
 cowsay
@@ -9,18 +10,22 @@ fd
 ffmpeg
 fnm
 fortune
+gh
 git-delta
 glow
 go
+hexyl
 httpie
 hyperfine
 imagemagick
 lazydocker
 lazygit
+licensor
 lolcat
 numi-cli
 ripgrep
 sevenzip
+spark
 speedtest-cli
 starship
 tokei

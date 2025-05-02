@@ -3,13 +3,13 @@ $username\
 $hostname\
 $directory\
 $git_branch\
-$git_state\
- $git_status\
+$git_status\
+$line_break\
 $character"""
 
 right_format = """
-$cmd_duration\
 $python\
+$cmd_duration\
 $status\
 """
 
@@ -18,12 +18,12 @@ style_user = 'yellow'
 style_root = 'red bold'
 format = '[$user]($style)'
 show_always = true
-disabled = false
+disabled = true
 
 [hostname]
 ssh_only = false
 format = '@[$hostname](blue) '
-disabled = false
+disabled = true
 
 [directory]
 style = "bold blue"
@@ -31,44 +31,23 @@ truncation_length = 2
 fish_style_pwd_dir_length = 1
 
 [character]
-success_symbol = '[](bold green)'
-error_symbol = '[](bold red)'
+success_symbol = '[ ](bold green)'
+error_symbol = '[ ](bold red)'
 
 [git_branch]
 format = "[$branch]($style)"
 style = "dimmed white"
 
-# [git_status]
-# format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-# style = "cyan"
-# conflicted = "✖"
-# untracked = "✚"
-# modified = "✱"
-# staged = "●"
-# renamed = "»"
-# deleted = "✖"
-# stashed = "≡"
-
 [git_status]
-format = """
-[([](bold red)$conflicted[](bold red))](red)\
-[([](bold yellow)$staged$renamed[](bold yellow))](yellow)\
-[([](bold green)$untracked[](bold green))](green)\
-[([](bold blue)$modified$deleted[](bold blue))](blue)\
-[($ahead_behind)](purple)\
-[($stashed)](cyan) """
-style = "bold"
-conflicted = " ✖ "
-untracked = " ✚ "
-modified = " ✱ "
-staged = " ● "
-renamed = " » "
-deleted = " ✖ "
-stashed = " ≡ "
-
-[git_state]
-format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = "bright-black"
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218)($ahead_behind$stashed)]($style)"
+style = "cyan"
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = "≡"
 
 [cmd_duration]
 format = "[$duration]($style) "

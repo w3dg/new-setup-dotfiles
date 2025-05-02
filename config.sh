@@ -1,9 +1,4 @@
 #!/usr/bin/bash
-
-#####
-# w3dg - 2025, Jan 12
-#####
-
 BASEDIR=$(pwd)
 
 # Update and upgrade your base system
@@ -13,11 +8,7 @@ sudo apt update -y && sudo apt upgrade -y
 sudo apt install -y  git vim wget curl neovim
 
 # Run linking script for linking up dotfiles
-
 bash $BASEDIR/link.sh
-
-# put expected file for git diff decorations
-cp $BASEDIR/.catppuccin.gitconfig $HOME
 
 mkdir -p $HOME/.config/zathura
 cp $BASEDIR/.config/zathura/zathurarc $HOME/.config/zathura/zathurarc
@@ -39,7 +30,7 @@ sudo fc-cache -f -v
 
 cd $BASEDIR
 
-# Install zsh, ohmyzsh, powerlevel10k, zsh-autosuggestions, zsh-syntax-highlighting
+# Install zsh, ohmyzsh, starship, zsh-autosuggestions, fast-syntax-highlighting
 sudo apt install -y zsh
 # Get Ohmyzsh, this also changes default shell to zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -49,9 +40,6 @@ git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZS
 
 # Install auto-suggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
-# Add catppuccin syntax highlighting for zsh
-# cp $BASEDIR/catppuccin_mocha-zsh-syntax-highlighting.zsh $HOME
 
 ## Install HomeBrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -66,11 +54,8 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # Temporarily increase system's file descriptor limit so that brew passes while installing lots of packages
 
 BEFORE_ULIMIT_CHANGE=$(ulimit -n)
-
 ulimit -n 65535
-
 xargs brew install < $BASEDIR/Brewfile
-
 ulimit -n $BEFORE_ULIMIT_CHANGE
 
 # Set bat themes https://github.com/catppuccin/bat
@@ -81,9 +66,9 @@ wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/
 wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
 bat cache --build
 
-# Install fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
-bash $HOME/.fzf/install
+# Install fzf (handled in brew now)
+# git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+# bash $HOME/.fzf/install
 # automatically checks and adds necessary additions to shell scripts, but we did that before, at this point it should be there
 
 # Get Micro as a text editor
@@ -142,7 +127,18 @@ sudo apt install obs-studio
 
 # Install Pandoc and Eisvogel
 
-sudo apt install pandoc texlive
+sudo apt install pandoc 
+
+read -p "Do you want to install texlive now? (y/n) " $REPLY
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "Installing texlive"
+  sudo apt install texlive
+else
+    echo "Skipping texlive installation"
+    echo "To install texlive later, run the following command:"
+    echo "sudo apt install texlive"
+fi
+
 # Eisvogel Latex template - https://github.com/Wandmalfarbe/pandoc-latex-template
 wget "https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex"
 mkdir -p $HOME/.local/share/pandoc/templates

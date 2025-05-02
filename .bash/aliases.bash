@@ -99,3 +99,5 @@ alias nf="neofetch"
 alias ff="fastfetch"
 
 alias lg="lazygit"
+
+alias ghb="gh browse > /dev/null"

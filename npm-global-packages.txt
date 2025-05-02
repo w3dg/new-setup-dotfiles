@@ -1,6 +1,5 @@
 @antfu/ni
 commitizen
-corepack
 cz-conventional-changelog
 eslint
 gitignore
@@ -10,9 +9,11 @@ live-server
 npkill
 npm-check-updates
 npm
+pnpm
 reveal-md
 serve
 tldr
 ts-node
 typescript
 vercel
+yarn

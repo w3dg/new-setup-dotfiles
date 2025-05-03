@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
-PATH="/home/dg/.nvm/versions/node/v22.5.1/bin:/home/dg/bin:/usr/local/bin:/home/dg/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/dg/.fzf/bin:/usr/lib/jvm/jdk-21-oracle-x64//bin"
+
+# move brew's bin temporarily to the end so that system python gets picked up first
+BREW_PREFIX=$(brew --prefix)
+PATH=$(echo $PATH | sed -e "s|:${BREW_PREFIX}/bin||g" -e "s|:${BREW_PREFIX}/sbin||g")
+PATH=$PATH:$BREW_PREFIX/bin:$BREW_PREFIX/sbin
 PREFIX="installs/"
 GOGH_REPO="$HOME/Gogh"
 export TERMINAL="terminator"
@@ -11,7 +15,7 @@ if [ $# -eq 1 ]; then
   else
     SELECTED="$1.sh"
   fi
-  echo default | $GOGH_REPO/$PREFIX$SELECTED  
+  echo default | $GOGH_REPO/$PREFIX$SELECTED
 else
   SELECTED=$(ls $GOGH_REPO/installs | fzf)
   if [[ $? == 0 ]]; then

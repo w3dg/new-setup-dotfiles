@@ -66,9 +66,8 @@ wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/
 wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
 bat cache --build
 
-# Install fzf (handled in brew now)
-# git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
-# bash $HOME/.fzf/install
+git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+bash $HOME/.fzf/install
 # automatically checks and adds necessary additions to shell scripts, but we did that before, at this point it should be there
 
 # Get Micro as a text editor
@@ -127,7 +126,7 @@ sudo apt install obs-studio
 
 # Install Pandoc and Eisvogel
 
-sudo apt install pandoc 
+sudo apt install pandoc
 
 read -p "Do you want to install texlive now? (y/n) " $REPLY
 if [[ $REPLY =~ ^[Yy]$ ]]; then

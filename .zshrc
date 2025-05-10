@@ -149,5 +149,5 @@ fi
 
 
 # [[ $PWD = $HOME ]] && fortune | cowsay -f tux || true
-[[ $PWD = $HOME ]] && fastfetch --config examples/20.jsonc || true
+[[ $PWD = $HOME ]] && fastfetch --config examples/8.jsonc || true
 [[ $PWD = $HOME ]] && [[ -f ~/todo.md ]] && glow ~/todo.md || true

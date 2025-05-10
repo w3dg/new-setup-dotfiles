@@ -14,19 +14,28 @@ mkdir -p $HOME/.config/zathura
 cp $BASEDIR/.config/zathura/zathurarc $HOME/.config/zathura/zathurarc
 
 # Install Fira Code Nerd Font
-curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.tar.xz
-curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CommitMono.tar.xz
+curl -OLs https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.tar.xz
+curl -OLs https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CommitMono.tar.xz
+curl -OLs https://github.com/ryanoasis/nerd-fonts/releases/latest/download/BitstreamVeraSansMono.tar.xz
 
 mv $BASEDIR/FiraCode.tar.xz /tmp
 mv $BASEDIR/CommitMono.tar.xz /tmp
+mv $BASEDIR/BitstreamVeraSansMono.tar.xz /tmp
 
 cd /tmp
 
 tar xvf FiraCode.tar.xz
 tar xvf CommitMono.tar.xz
+tar xvf BitstreamVeraSansMono.tar.xz
 
 sudo mv *ttf /usr/share/fonts/truetype
+sudo mv *otf /usr/share/fonts/opentype
+
 sudo fc-cache -f -v
+
+rm /tmp/FiraCode.tar.xz
+rm /tmp/CommitMono.tar.xz
+rm /tmp/BitstreamVeraSansMono.tar.xz
 
 cd $BASEDIR
 

@@ -5,9 +5,10 @@
 - `cht.sh` - [cht.sh utility](https://cht.sh/)
 - `create-express-starter.sh` - Creates an express app from a template
 - `dev.sh` - Figures how to start a project in dev mode in the current directory
+- `define.sh` - Pulls definitions for a given word from the free dictionary
 - `e` - Open a file in `EDITOR`
 - `gbr.sh` - create branch / switch to branch (fzf)
-- `generate-gitignore.sh` and `gi.sh` - Generates a gitignore file from online [gitignore.io](gitignore.io)
+- `generate-gitignore.sh` and `gi.sh` - Generates a gitignore file from online [gitignore.io](https://gitignore.io)
 - `get_bing_wallpaper.sh` - Gets today's daily wallpaper from Bing
 - `md-to-pdf-eisvogel.sh` - Converts a markdown file to pdf with the eisvogel template
 - `reddit.sh` - A smol reddit client to open posts in the browser

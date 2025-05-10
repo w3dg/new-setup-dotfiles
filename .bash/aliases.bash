@@ -20,9 +20,7 @@ alias tree="eza -TF --icons=auto"
 # clear all history ; even from the current session; close the session to get rid of all persistence
 alias historyclearall="/usr/bin/cat /dev/null > ~/.bash_history && history -c && exit"
 alias size="du -hcs ."
-# alias man='tldr'
 alias total_files='ls -l | wc -l'
-alias tldr='tldr -t ocean'
 alias cl="clear"
 
 # Reload bashrc after modifying, in the current session
@@ -67,8 +65,8 @@ alias weather='curl wttr.in/'
 # reveal-md (see npm)
 alias reveal-md="reveal-md --theme night --highlight-theme hybrid --port 1337 --w --css style.css"
 # Open Settings for Windows terminal
-alias wtsetting="$EDITOR ~/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
-alias sublwt="subl $(alias wtsetting | cut  -d' ' -f3 | tr -d "'")"
+# alias wtsetting="$EDITOR ~/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
+# alias sublwt="subl $(alias wtsetting | cut  -d' ' -f3 | tr -d "'")"
 
 # Print Each Path entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'

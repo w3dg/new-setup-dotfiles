@@ -130,6 +130,28 @@ back() {
 	cp "$1"{,.bak};
 }
 
+# replace file name with spaces to have it with dashes instead
+rename_with_dashes() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: rename_with_dashes \"filename with spaces.ext\""
+    return 1
+  fi
+
+  original="$1"
+  # Replace spaces with dashes
+  new_name="${original// /-}"
+
+  if [[ "$original" == "$new_name" ]]; then
+    echo "No spaces found. Filename unchanged: $original"
+    return 0
+  fi
+
+  # Perform the rename
+  mv -- "$original" "$new_name"
+  echo "Renamed: \"$original\" -> \"$new_name\""
+}
+
+
 # Grep current directories' files for todos etc
 todos() {
 	rg 'TODO|FIXME|WARN|BUG'

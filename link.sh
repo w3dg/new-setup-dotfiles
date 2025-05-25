@@ -2,7 +2,7 @@
 
 BASEDIR=$(pwd)
 
-DOTFILES=(.bash_profile .bashrc .catppuccin.gitconfig .gitconfig .gitignore .inputrc .npmrc .zshrc .bash .p10k.zsh bin .czrc .zshenv .config/starship.toml)
+DOTFILES=(.bash_profile .bashrc .catppuccin.gitconfig .gitconfig .gitignore .inputrc .npmrc .zshrc .bash .p10k.zsh bin .czrc .zshenv .config/starship.toml .config/ghostty .config/zathura)
 
 mkdir -p $HOME/.config
 

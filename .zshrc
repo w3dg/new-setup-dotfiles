@@ -103,6 +103,7 @@ export HISTORY_IGNORE="(ls|ll|lsa|lls|cd|pwd|exit|sudo reboot|reboot|history|cd 
 source ~/.bash/exports.bash        # Exports
 source ~/.bash/functions.bash      # Custom functions
 source ~/.bash/aliases.bash        # Aliases
+source ~/.bash/completion-for-pnpm.zsh # pnpm completion
 
 # git aliases handled by omz custom one here
 function gitcd() {
@@ -147,7 +148,14 @@ elif [ $XDG_SESSION_TYPE = 'wayland' ]; then
   alias clip="wl-copy"
 fi
 
+greeting() {
+    UNAME_OUTPUT=$(uname -a)
+    echo -e "\e[1mHostname: \e[0;32m$(echo $UNAME_OUTPUT | cut -d' ' -f2)\e[0m"
+    echo -e "\e[1mKernel: \e[0;33m$(echo $UNAME_OUTPUT | cut -d' ' -f3)\e[0m"
+    echo -e "\e[1mUptime: \e[0;36m$(uptime -p | cut -d' ' -f 2-)\e[0m"
+    echo -e "\e[1mNetwork: \e[0;35m$(ip addr show scope global | grep inet | awk '{print $2}')\e[0m"
+    echo "Today is $(date +"%a, %b %d")"
+}
 
-# [[ $PWD = $HOME ]] && fortune | cowsay -f tux || true
-[[ $PWD = $HOME ]] && fastfetch --config examples/8.jsonc || true
 [[ $PWD = $HOME ]] && [[ -f ~/todo.md ]] && glow ~/todo.md || true
+greeting

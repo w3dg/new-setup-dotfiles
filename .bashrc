@@ -20,6 +20,7 @@ source ~/.bash/aliases.bash        # Aliases
 source ~/.bash/git_aliases.bash    # Git aliases
 
 source ~/.bash/npm-completion.bash # npm completion
+source ~/.bash/completion-pnpm.bash # pnpm completion
 source ~/.bash/pandoc-completion.bash # pandoc completion
 
 # fzf - Website: https://github.com/junegunn/fzf

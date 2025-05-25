@@ -1,6 +1,8 @@
 BACKUP=backup-$(hostname)-$(date --iso-8601).tar.gz
+DIR=$1
+DIR_TO_BACKUP=${DIR:=.}
 
-tar -cvpzf "$BACKUP" \
+tar --create -v --gzip --preserve-permissions -f "$BACKUP" \
 	--exclude="$BACKUP" \
 	--exclude="*/venv" \
 	--exclude="*/.venv" \
@@ -57,13 +59,13 @@ tar -cvpzf "$BACKUP" \
 	--exclude=".zoom" \
 	--exclude=".zsh" \
 	--exclude=".yarn" \
-	.
+	$DIR_TO_BACKUP
 
 while true; do
     read -r -p "Do you wish to encrypt with GPG (y/n): " answer
     case $answer in
-        [Yy]* ) gpg --symmetric --cipher-algo AES256 $BACKUP; break;;
-        [Nn]* ) exit;;
+        [Yy]* ) gpg --symmetric --cipher-algo AES256 $BACKUP; BACKUP=$BACKUP.gpg break;;
+        [Nn]* ) break;;
         * ) echo "Please answer Y or N.";;
     esac
 done
@@ -73,3 +75,19 @@ done
 # $ EXTRACTED=backup-test-2025-01-19T00-34-31.tar.gz
 # $ gpg --output $EXTRACTED --decrypt $EXTRACTED.gpg
 # $ tar xvf $EXTRACTED
+
+# Rsync it over to external source
+use_rsync() {
+    read -p "Enter file path to copy the backup externally to: " -r DEST;
+    mkdir -p $DEST;
+    rsync --archive --human-readable --progress --partial $BACKUP $DEST;
+}
+
+while true; do
+    read -p "Do you wish to backup externally? : " -r answer
+    case $answer in
+        [Yy]* ) use_rsync; break ;;
+        [Nn]* ) break ;;
+        * ) echo "Please answer Y or N.";;
+    esac
+done

@@ -98,12 +98,12 @@ up() {
 # Uses fzf, fd
 cd_with_fzf() {
     # cd $HOME && cd "$(fd -t d | fzf)"
-	cd "$(fd -t d --maxdepth 3 --exclude node_modules --exclude .git | fzf --query=$1)"
+	cd "$(fd -t d --maxdepth 5 --exclude node_modules --exclude .git | fzf --query=$1)"
 }
 
 cd_with_fzf_home() {
     # cd $HOME && cd "$(fd -t d | fzf)"
-	cd $HOME && cd "$(fd -t d --maxdepth 3 --exclude node_modules --exclude .git | fzf --query=$1)"
+	cd $HOME && cd "$(fd -t d --maxdepth 5 --exclude node_modules --exclude .git | fzf --query=$1)"
 }
 
 cdf() {

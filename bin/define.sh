@@ -12,7 +12,3 @@ query=$(curl -s --connect-timeout 5 --max-time 10 $URL)
 
 # get all definitions line by line
 echo $query | jq -r -M '.[] .meanings[].definitions[].definition'
-
-# def=$(echo $query | jq -M -r '.[0].meanings.[0].definitions.[].definition')
-
-# def=$(echo "$query" | jq -r '.[0].meanings[] | "\(.partOfSpeech): \(.definitions[0].definition)\n"')

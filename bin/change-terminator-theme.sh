@@ -2,11 +2,13 @@
 
 # move brew's bin temporarily to the end so that system python gets picked up first
 BREW_PREFIX=$(brew --prefix)
+
 PATH=$(echo $PATH | sed -e "s|:${BREW_PREFIX}/bin||g" -e "s|:${BREW_PREFIX}/sbin||g")
 PATH=$PATH:$BREW_PREFIX/bin:$BREW_PREFIX/sbin
+
 PREFIX="installs/"
 GOGH_REPO="$HOME/Gogh"
-export TERMINAL="terminator"
+TERMINAL="terminator"
 SELECTED=""
 if [ $# -eq 1 ]; then
   if [ $1 = "random" -o $1 = "r" ]; then

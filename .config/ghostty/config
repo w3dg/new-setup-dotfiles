@@ -1,6 +1,7 @@
-theme = Arthur
-font-family = CodeNewRoman Nerd Font Mono
-font-size = 14
+theme = citruszest
+# theme = rose-pine
+font-family = FiraCode Nerd Font Mono
+font-size = 13
 unfocused-split-opacity = 0.8
 cursor-style = block
 cursor-style-blink = false
@@ -10,9 +11,8 @@ bold-is-bright = true
 window-padding-x = 2,0
 window-padding-y = 0,2
 window-padding-color = background
-window-height = 30
-window-width = 120
-
+window-height = 35
+window-width = 135
 
 keybind = alt+shift+minus=new_split:down
 keybind = alt+shift+plus=new_split:right

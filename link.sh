@@ -8,7 +8,7 @@ mkdir -p $HOME/.config
 
 for dot in "${DOTFILES[@]}"; do
 	echo "Removing $HOME/$dot"
-	rm -f "$HOME/$dot"
+	rm -rf "$HOME/$dot"
 	echo "Linking $dot"
 	ln -s $BASEDIR/$dot $HOME/$dot
 done

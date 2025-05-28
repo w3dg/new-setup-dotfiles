@@ -1,29 +1,28 @@
 format = """
-$username\
-$hostname\
 $directory\
 $git_branch\
 $git_status\
+$fill\
+$python$cmd_duration$status \
 $line_break\
 $character"""
 
 right_format = """
-$python\
-$cmd_duration\
-$status\
+$username\
+$hostname\
 """
 
 [username]
-style_user = 'yellow'
+style_user = 'dimmed white'
 style_root = 'red bold'
 format = '[$user]($style)'
 show_always = true
-disabled = true
+# disabled = true
 
 [hostname]
 ssh_only = false
-format = '@[$hostname](blue) '
-disabled = true
+format = '[@$hostname](dimmed white)'
+# disabled = true
 
 [directory]
 style = "bold blue"
@@ -31,8 +30,12 @@ truncation_length = 2
 fish_style_pwd_dir_length = 1
 
 [character]
-success_symbol = '[ ](bold green)'
-error_symbol = '[ ](bold red)'
+# success_symbol = '[](bold green)'
+# success_symbol = '[󰅂](bold green)'
+error_symbol = '[](bold red)'
+
+[fill]
+symbol = ' '
 
 [git_branch]
 format = "[$branch]($style)"

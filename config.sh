@@ -10,9 +10,6 @@ sudo apt install -y  git vim wget curl neovim
 # Run linking script for linking up dotfiles
 bash $BASEDIR/link.sh
 
-mkdir -p $HOME/.config/zathura
-cp $BASEDIR/.config/zathura/zathurarc $HOME/.config/zathura/zathurarc
-
 # Install Fira Code Nerd Font
 curl -OLs https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.tar.xz
 curl -OLs https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CommitMono.tar.xz

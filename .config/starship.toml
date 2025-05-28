@@ -3,7 +3,7 @@ $directory\
 $git_branch\
 $git_status\
 $fill\
-$python$cmd_duration$status \
+$python$cmd_duration$status $time\
 $line_break\
 $character"""
 
@@ -61,10 +61,16 @@ format = "[$status]($style)"
 style = "bold red"
 disabled = false
 pipestatus = true
-pipestatus_format = "[$pipestatus]($style)"
+pipestatus_format = "[$pipestatus]($style) "
 pipestatus_separator = "|"
 map_symbol = false
 
 [python]
 format = "[$virtualenv]($style) "
 style = "bright-black"
+
+[time]
+disabled = false
+style = "bold white"
+format = '[$time]($style) '
+time_format = '%H:%M'

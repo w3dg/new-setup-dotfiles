@@ -1,0 +1,39 @@
+color-link default "#403f53,#FBFBFB" # ok
+color-link color-column "#1B1B1B"
+color-link comment "#637777" # ok
+color-link constant "#5ca7e4" # ok
+color-link constant.bool "#bc5454" # ok
+color-link constant.bool.false "#bc5454" # ok
+color-link constant.bool.true "#bc5454" # ok
+color-link constant.number "#F78C6C" # ok
+color-link constant.specialChar "#DDF2A4" # ok
+color-link constant.string "#c96765" # ok
+color-link cursor-line "#E0E0E0" # ok
+color-link divider "#1E1E1E"
+color-link error "#FFFFFF,#ff2c83" # ok
+color-link diff-added "#8FBCBB" # ok
+color-link diff-modified "#8FBCBB" # ok
+color-link diff-deleted "#D70000" # ok
+color-link gutter-error "#9B859D"
+color-link gutter-warning "#9B859D"
+color-link identifier "#ff0000"
+color-link identifier.macro ""
+color-link identifier.class "#c792ea" # ok
+color-link identifier.var "#0c969b" # ok
+color-link indent-char "#515151"
+color-link current-line-number "#403f53,#E0E0E0" # ok
+color-link line-number "#90A7B2,#FBFBFB"
+color-link preproc "#E0C589"
+color-link preproc.shebang "#637777" # ok
+color-link special "#E0C589"
+color-link statement "#c792ea" # ok
+color-link statusline "#403f53,#E0E0E0" # ok
+color-link symbol "#994cc3"
+color-link symbol.brackets "#403f53" # ok
+color-link symbol.operator "#994cc3" # ok
+color-link symbol.tag "#994cc3" # ok
+color-link tabbar "#403f53,#E0E0E0"
+color-link todo "#8B98AB"
+color-link type "#0c969b" # ok
+color-link type.keyword "#ffffff"
+color-link underlined "#8996A8"

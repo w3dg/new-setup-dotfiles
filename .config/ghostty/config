@@ -1,7 +1,7 @@
-theme = citruszest
-# theme = rose-pine
-font-family = FiraCode Nerd Font Mono
+theme = deep
+font-family = JetBrainsMono Nerd Font Mono
 font-size = 13
+font-feature = -calt
 unfocused-split-opacity = 0.8
 cursor-style = block
 cursor-style-blink = false
@@ -13,6 +13,8 @@ window-padding-y = 0,2
 window-padding-color = background
 window-height = 35
 window-width = 135
+maximize = true
+background-opacity = 0.95
 
 keybind = alt+shift+minus=new_split:down
 keybind = alt+shift+plus=new_split:right

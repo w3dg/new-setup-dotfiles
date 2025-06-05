@@ -12,6 +12,3 @@ for dot in "${DOTFILES[@]}"; do
 	echo "Linking $dot"
 	ln -s $BASEDIR/$dot $HOME/$dot
 done
-
-rm -rf "$HOME/.p10k.zsh"
-ln -s $BASEDIR/p10k-catppuccin-configured.zsh $HOME/.p10k.zsh

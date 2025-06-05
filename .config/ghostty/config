@@ -1,20 +1,24 @@
-theme = deep
-font-family = JetBrainsMono Nerd Font Mono
-font-size = 13
+theme = Tinacious Design (Dark) 
+
+font-family = InputMono Nerd Font Mono
+font-size = 14
 font-feature = -calt
+
+# background-opacity = 0.9
 unfocused-split-opacity = 0.8
+
 cursor-style = block
 cursor-style-blink = false
 shell-integration-features = no-cursor
 scrollback-limit = 10000000
 bold-is-bright = true
+
 window-padding-x = 2,0
 window-padding-y = 0,2
 window-padding-color = background
 window-height = 35
 window-width = 135
 maximize = true
-background-opacity = 0.95
 
 keybind = alt+shift+minus=new_split:down
 keybind = alt+shift+plus=new_split:right

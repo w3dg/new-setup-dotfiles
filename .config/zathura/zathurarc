@@ -14,4 +14,4 @@ map [fullscreen] D toggle_page_mode
 map [fullscreen] r reload
 map [fullscreen] R rotate
 map [fullscreen] i recolor
-include catppuccin-macchiato
+include catppuccin-mocha

@@ -1,7 +1,8 @@
-theme = Tinacious Design (Dark) 
+theme = Tinacious Design (Dark)
 
-font-family = InputMono Nerd Font Mono
-font-size = 14
+# font-family = InputMono Nerd Font Mono
+font-family = JetBrainsMono Nerd Font Mono
+font-size = 13
 font-feature = -calt
 
 # background-opacity = 0.9

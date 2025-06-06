@@ -3,6 +3,7 @@ bat
 cmatrix
 cowsay
 dust
+dysk
 exiftool
 eza
 fastfetch
@@ -11,9 +12,11 @@ ffmpeg
 fnm
 fortune
 gh
+gifski
 git-delta
 glow
 go
+gum
 hexyl
 httpie
 hyperfine
@@ -28,10 +31,12 @@ sevenzip
 spark
 speedtest-cli
 starship
+tealdeer
 tokei
 trash-cli
 uv
 valgrind
 whois
+xh
 yt-dlp
 zoxide

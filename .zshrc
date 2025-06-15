@@ -87,6 +87,9 @@ plugins=(
     fast-syntax-highlighting
 )
 
+# Disable highlight on paste https://github.com/zsh-users/zsh/blob/ac0dcc9a63dc2a0edc62f8f1381b15b0b5ce5da3/NEWS#L37-L42
+zle_highlight+=(paste:none)
+
 source $ZSH/oh-my-zsh.sh
 
 export GOPATH="$HOME/go"

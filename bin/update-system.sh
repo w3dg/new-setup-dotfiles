@@ -129,7 +129,7 @@ sleep 2
 print_bold_yellow "Running brew upgrade"
 brew upgrade
 
-brew cleanup
+brew cleanup --prune=all
 
 ulimit -n $BEFORE_ULIMIT_CHANGE
 

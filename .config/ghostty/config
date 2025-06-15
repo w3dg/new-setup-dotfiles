@@ -1,6 +1,5 @@
-theme = Arthur 
+theme = Dark+
 
-# font-family = InputMono Nerd Font Mono
 font-family = JetBrainsMono Nerd Font Mono
 font-size = 13
 font-feature = -calt

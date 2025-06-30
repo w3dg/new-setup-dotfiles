@@ -98,4 +98,4 @@ alias ff="fastfetch"
 
 alias lg="lazygit"
 
-alias ghb="gh browse > /dev/null"
+alias ghb="gh browse > /dev/null 2>/dev/null"

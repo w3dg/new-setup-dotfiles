@@ -125,7 +125,7 @@ cdfl() {
 	cd $DIR
 }
 
-# Qickly make a backup of a file
+# Quickly make a backup of a file
 back() {
 	cp "$1"{,.bak};
 }
@@ -151,6 +151,16 @@ rename_with_dashes() {
   echo "Renamed: \"$original\" -> \"$new_name\""
 }
 
+
+# fuzzy man page opener
+fzman() {
+    query=$(man -k . | fzf)
+    if [[ $? -ne 0 ]]; then
+        return 1
+    fi
+
+    man $(echo $query | awk '{ gsub(/[()]/, ""); print  $2" "$1 }')
+}
 
 # Grep current directories' files for todos etc
 todos() {

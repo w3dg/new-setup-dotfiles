@@ -37,3 +37,6 @@ export MICRO_TRUECOLOR=1
 # jdk
 export JAVA_HOME="/usr/lib/jvm/jdk-21-oracle-x64/"
 export PATH=$PATH:$JAVA_HOME/bin
+
+# go
+export GOPATH="$HOME/go"

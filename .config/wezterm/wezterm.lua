@@ -14,8 +14,11 @@ config.initial_rows = 35
 
 -- or, changing the font size and color scheme.
 -- https://wezterm.org/colorschemes
-config.font_size = 12
-config.color_scheme = 'Ef-Bio' --'Tomorrow (dark) (terminal.sexy)' --  'zenwritten_dark' -- 'carbonfox'
+config.font_size = 14
+config.color_scheme =  'Mikazuki (terminal.sexy)' -- 'Google Dark (base16)'
+
+-- light
+-- config.color_scheme = 'Google Light (base16)'
 
 config.max_fps = 120
 config.animation_fps = 1
@@ -27,7 +30,18 @@ config.prefer_egl = true
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
 -- Font families with fallbacks
-config.font = wezterm.font_with_fallback { 'MonaspiceAr Nerd Font Mono', 'JetBrainsMono Nerd Font', 'Noto Color Emoji' }
+config.font = wezterm.font_with_fallback {
+    'CodeNewRoman Nerd Font Mono',
+    'CommitMono Nerd Font Mono',
+    'RobotoMono Nerd Font Mono',
+    'Inconsolata Nerd Font Mono',
+    'JetBrainsMono Nerd Font Mono',
+    'Noto Color Emoji'
+    }
+
+-- Scrollbar
+config.enable_scroll_bar = true
+config.scrollback_lines = 1000000
 
 -- Keybinds
 config.keys = {}

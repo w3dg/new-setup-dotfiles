@@ -33,6 +33,7 @@ alias rm='rm -iIv'
 alias ln='ln -i'
 
 alias mkdir='mkdir -pv'
+alias df='df -hT' # human readable sizes and fs type
 
 # Additional Programs replacing normal ones
 # bat is a rust utility similar to the cat(1) command. install via scoop or other package manager https://github.com/sharkdp/bat

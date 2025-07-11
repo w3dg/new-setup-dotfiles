@@ -182,12 +182,25 @@ color256() {
 
 # Python Virtual Env activations
 
-# source the closest virtualenv to pwd
+# source the closest virtualenv to pwd, if multiple are present, show a fzf picker
 sv() {
 	if [ ! -z $VIRTUAL_ENV ]; then
 		deactivate # deactivate what venv is currently enabled
 	fi
-	PATH_TO_LOCAL_ACTIVATION_SCRIPT=$(\find -type f -iname "activate")
+	local scripts=$(\find -type f -iname "activate")
+	local scriptslen=$(echo ${scripts[@]} | wc -l)
+
+    local PATH_TO_LOCAL_ACTIVATION_SCRIPT=""
+
+	if [[ $scriptslen -ne 1 ]];
+	then
+	    chosenscript=$(echo ${scripts[@]} | fzf)
+	    [[ $? -ne 0 ]] && echo "script not chosen" && exit
+	    PATH_TO_LOCAL_ACTIVATION_SCRIPT=${chosenscript}
+	else
+	    PATH_TO_LOCAL_ACTIVATION_SCRIPT=${scripts}
+	fi
+
 	if [ ! -z $PATH_TO_LOCAL_ACTIVATION_SCRIPT ]; then
 		source $PATH_TO_LOCAL_ACTIVATION_SCRIPT
 		VENV_PARENT_DIR=$(dirname $(echo $VIRTUAL_ENV) | sed "s|$HOME|~|")

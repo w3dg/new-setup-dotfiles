@@ -2,7 +2,7 @@
 
 file="$1"
 
-if [ -z file ]; then
+if [ -z $file ]; then
     echo "no file specified"
     exit 1
 fi

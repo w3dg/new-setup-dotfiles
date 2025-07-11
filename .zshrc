@@ -6,11 +6,11 @@
 # zprof # at the end of the file
 
 export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/go/bin:$PATH # Add Go bin to path
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 export ZSH="$HOME/.oh-my-zsh"
 # ZSH_THEME="robbyrussell"
+ZSH_THEME=""
 
 # ZSH_THEME="powerlevel10k/powerlevel10k"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -92,7 +92,6 @@ zle_highlight+=(paste:none)
 
 source $ZSH/oh-my-zsh.sh
 
-export GOPATH="$HOME/go"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -110,6 +109,8 @@ source ~/.bash/exports.bash        # Exports
 source ~/.bash/functions.bash      # Custom functions
 source ~/.bash/aliases.bash        # Aliases
 source ~/.bash/completion-for-pnpm.zsh # pnpm completion
+
+export PATH=${GOPATH:=$HOME/goasdasd}/bin:$PATH # Add Go bin to path
 
 # git aliases handled by omz custom one here
 function gitcd() {

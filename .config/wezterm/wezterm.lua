@@ -14,11 +14,13 @@ config.initial_rows = 35
 
 -- or, changing the font size and color scheme.
 -- https://wezterm.org/colorschemes
-config.font_size = 14
-config.color_scheme =  'Mikazuki (terminal.sexy)' -- 'Google Dark (base16)'
+config.font_size = 13
+--config.color_scheme = 'Belge (terminal.sexy)'
+-- config.color_scheme = 'Violet Dark'
+config.color_scheme = 'VisiBone (terminal.sexy)'
 
 -- light
--- config.color_scheme = 'Google Light (base16)'
+-- config.color_scheme = 'Modus-Operandi' -- 'Google Light (base16)'
 
 config.max_fps = 120
 config.animation_fps = 1
@@ -31,11 +33,10 @@ config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
 -- Font families with fallbacks
 config.font = wezterm.font_with_fallback {
-    'CodeNewRoman Nerd Font Mono',
-    'CommitMono Nerd Font Mono',
-    'RobotoMono Nerd Font Mono',
-    'Inconsolata Nerd Font Mono',
-    'JetBrainsMono Nerd Font Mono',
+    'NotoMono Nerd Font',
+    'CodeNewRoman Nerd Font',
+    'RobotoMono Nerd Font',
+    'JetBrainsMono Nerd Font',
     'Noto Color Emoji'
     }
 

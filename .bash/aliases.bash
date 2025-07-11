@@ -1,7 +1,6 @@
 # Bash Aliases
 
 # https://github.com/eza-community/eza
-
 # alias ls='lsd'
 # for normal ls
 # alias ls='ls --color -F --group-directories-first'
@@ -24,7 +23,7 @@ alias total_files='ls -l | wc -l'
 alias cl="clear"
 
 # Reload bashrc after modifying, in the current session
-alias reload='source ~/.bashrc'
+alias reload='exec bash'
 
 # confirm before overwriting something and verbose output
 alias cp='cp -iv'
@@ -47,12 +46,13 @@ alias grep='rg'
 alias find='fd'
 # Alias curl to httpie - Project home page - https://github.com/httpie/httpie/
 # https://www.hanselman.com/blog/installing-httpie-http-for-humans-on-windows-great-for-aspnet-web-api-and-restful-json-services
-alias curl='http'
-# Alias wget to use httpie - Project home page - https://github.com/httpie/httpie/
+alias curl='xh'
+alias http='xh' # replace httpie with xh
 # alias wget='http --download'
-
 # Aliasing wget to aria2 for downloads
 alias wget='aria2c'
+
+
 
 # Utility Aliases
 # Get your external IP
@@ -94,9 +94,16 @@ alias yt-dlp-audio="yt-dlp -f bestaudio -x --audio-format mp3 --audio-quality 0"
 # https://www.npmjs.com/package/trash-cli
 alias rm='trash'
 
-alias nf="neofetch"
+# fastfetch
+alias nf="fastfetch"
 alias ff="fastfetch"
 
 alias lg="lazygit"
 
+# open current repo on github in browser (requires gh)
 alias ghb="gh browse > /dev/null 2>/dev/null"
+
+# wrap ivy with readline goodies and a prompt instead of default blank prompt
+# Ivy is an interpreter for an APL-like language.
+# go install robpike.io/ivy@latest
+alias iv="rlwrap ivy -prompt 'ivy% '"

@@ -18,7 +18,6 @@ glow
 go
 gum
 hexyl
-httpie
 hyperfine
 imagemagick
 lazydocker

@@ -244,5 +244,5 @@ privatesession() {
 }
 
 update_global_npm_packages() {
-    npm list -g | sed -E -e 's|^/.*$||g' -e 's/├──//g' -e 's/└──//g' -e 's/@[0-9]+\.[0-9]+\.[0-9]+//g' | xargs npm i -g
+    npm list -g | awk '{ print $2}' | sed -E "s/@[0-9]+\.[0-9]+\.[0-9]+//g" | xargs npm i -g
 }

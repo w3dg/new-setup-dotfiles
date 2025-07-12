@@ -110,8 +110,6 @@ source ~/.bash/functions.bash      # Custom functions
 source ~/.bash/aliases.bash        # Aliases
 source ~/.bash/completion-for-pnpm.zsh # pnpm completion
 
-export PATH=${GOPATH:=$HOME/goasdasd}/bin:$PATH # Add Go bin to path
-
 # git aliases handled by omz custom one here
 function gitcd() {
   local TOP="`git rev-parse --show-cdup 2>/dev/null`" || return 1;

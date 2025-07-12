@@ -65,8 +65,9 @@ pipestatus_separator = "|"
 map_symbol = false
 
 [python]
-format = '[(\($virtualenv\) )]($style)'
-style = "117"
+format = '[(${version} )(\($virtualenv\) )]($style)'
+style ="bold yellow" # "117"
+version_format='v${major}.${minor}'
 
 [time]
 # disabled = false

@@ -39,4 +39,5 @@ export JAVA_HOME="/usr/lib/jvm/jdk-21-oracle-x64/"
 export PATH=$PATH:$JAVA_HOME/bin
 
 # go
-export GOPATH="$HOME/go"
+export GOPATH="$HOME/code/go"
+export PATH=${GOPATH:=$HOME/go}/bin:$PATH # Add Go bin to path

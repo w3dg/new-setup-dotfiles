@@ -1,0 +1,4 @@
+robpike.io/ivy@latest
+github.com/air-verse/air@latest
+golang.org/x/tools/cmd/present@latest
+golang.org/x/tools/cmd/goimports@latest

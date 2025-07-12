@@ -98,11 +98,18 @@ fnm install $LATEST_NODE_MAJOR
 while read package; do npm i -g ${package}; done < $BASEDIR/npm-global-packages.txt
 
 # Install terminator
-sudo apt install -y terminator
+# sudo apt install -y terminator
 
 # copy over terminator config
-mkdir -p $HOME/.config/terminator
-cp $BASEDIR/terminator.config $HOME/.config/terminator/config
+# mkdir -p $HOME/.config/terminator
+# cp $BASEDIR/terminator.config $HOME/.config/terminator/config
+
+# Install wezterm
+curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
+echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
+sudo chmod 644 /usr/share/keyrings/wezterm-fury.gpg
+sudo apt update
+sudo apt install wezterm
 
 sudo apt install wl-clipboard  # wl-copy for wayland https://superuser.com/questions/1189467/how-to-copy-text-to-the-clipboard-when-using-wayland
 
@@ -152,3 +159,25 @@ mv $BASEDIR/eisvogel.tex $HOME/.local/share/pandoc/templates/eisvogel.tex
 ## VSCODE https://code.visualstudio.com/
 # GOOGLE CHROME https://www.google.com/chrome/
 # TRANSMISSION https://transmissionbt.com/download
+
+# ---
+
+
+# Install other utilities
+
+sudo apt install rlwrap # wrap another program in readline
+
+# Rust
+command curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+[ -f "$HOME/.cargo/env" ] && source $HOME/.cargo/env # add to path for this script
+
+cargo install xcp
+
+# Golang
+# The "go" command should already be there through brew
+mkdir -p $HOME/code/go
+export GOPATH="$HOME/code/go"
+export PATH=${GOPATH:=$HOME/go}/bin:$PATH # Add Go bin to path
+
+while read package; do echo go install $package; done < go-binary-packages.txt
+# golang.org/x/tools/cmd/{gopls,staticcheck} should be prompted to be installed from the go vscode extension anyways

@@ -8,6 +8,7 @@ exiftool
 eza
 fastfetch
 fd
+fend
 ffmpeg
 fnm
 fortune
@@ -24,7 +25,6 @@ lazydocker
 lazygit
 licensor
 lolcat
-numi-cli
 ripgrep
 sevenzip
 spark

@@ -2,3 +2,5 @@
 test -f ~/.profile && . ~/.profile
 test -f ~/.bashrc && . ~/.bashrc
 . "$HOME/.cargo/env"
+
+. "$HOME/.atuin/bin/env"

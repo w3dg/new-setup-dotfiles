@@ -107,3 +107,5 @@ alias ghb="gh browse > /dev/null 2>/dev/null"
 # Ivy is an interpreter for an APL-like language.
 # go install robpike.io/ivy@latest
 alias iv="rlwrap ivy -prompt 'ivy% '"
+
+alias ipython="ipython3 --no-banner"

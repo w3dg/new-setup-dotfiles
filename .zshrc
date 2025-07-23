@@ -102,6 +102,15 @@ export LANG=en_US.UTF-8
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# https://atuin.sh
+# https://docs.atuin.sh/configuration/key-binding/
+eval "$(atuin init zsh --disable-up-arrow --disable-ctrl-r)"
+bindkey '^a' atuin-search
+# bind to the up key, which depends on terminal mode
+# bindkey '^[[A' atuin-up-search
+# bindkey '^[OA' atuin-up-search
+
+
 setopt HIST_IGNORE_SPACE # ignore commands starting with space for sensitive stuff
 export HISTORY_IGNORE="(ls|ll|lsa|lls|cd|pwd|exit|sudo reboot|reboot|history|cd -|cd ..|clear|cl)"
 

@@ -146,4 +146,3 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # zoxide - Website: https://github.com/ajeetdsouza/zoxide
 eval "$(zoxide init bash)"
-

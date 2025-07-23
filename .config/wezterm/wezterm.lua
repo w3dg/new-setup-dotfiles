@@ -15,12 +15,9 @@ config.initial_rows = 35
 -- or, changing the font size and color scheme.
 -- https://wezterm.org/colorschemes
 config.font_size = 13
---config.color_scheme = 'Belge (terminal.sexy)'
--- config.color_scheme = 'Violet Dark'
-config.color_scheme = 'VisiBone (terminal.sexy)'
-
+config.color_scheme = 'Vs Code Dark+ (Gogh)'
 -- light
--- config.color_scheme = 'Modus-Operandi' -- 'Google Light (base16)'
+-- config.color_scheme = 'Vs Code Light+ (Gogh)'
 
 config.max_fps = 120
 config.animation_fps = 1
@@ -33,9 +30,9 @@ config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
 -- Font families with fallbacks
 config.font = wezterm.font_with_fallback {
-    'NotoMono Nerd Font',
-    'CodeNewRoman Nerd Font',
+    'LiterationMono Nerd Font',
     'RobotoMono Nerd Font',
+    'NotoMono Nerd Font',
     'JetBrainsMono Nerd Font',
     'Noto Color Emoji'
     }
@@ -77,10 +74,11 @@ for _, v in ipairs({
 --   {"*", act.ResetFontSize}
 -- }) do table.insert(config.keys, {mods="ALT", key=v[1], action=v[2]}) end
 
-wezterm.on('gui-startup', function(cmd)
-  local tab, pane, window = mux.spawn_window(cmd or {})
-  window:gui_window():maximize()
-end)
+-- Maximize on startup
+-- wezterm.on('gui-startup', function(cmd)
+--   local tab, pane, window = mux.spawn_window(cmd or {})
+--   window:gui_window():maximize()
+-- end)
 
 -- Mouse bindings
 config.mouse_bindings = {

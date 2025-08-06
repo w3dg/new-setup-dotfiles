@@ -1,4 +1,5 @@
 aria2
+atuin
 bat
 cmatrix
 cowsay
@@ -25,6 +26,7 @@ lazydocker
 lazygit
 licensor
 lolcat
+mdbook
 ripgrep
 sevenzip
 spark

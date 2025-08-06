@@ -1,11 +1,12 @@
 format = """
-$python\
 $directory\
 $git_branch\
 $git_status\
 $character"""
 
 right_format = """
+$python\
+$nodejs\
 $cmd_duration$status\
 $username\
 $hostname\
@@ -65,9 +66,14 @@ pipestatus_separator = "|"
 map_symbol = false
 
 [python]
-format = '[(${version} )(\($virtualenv\) )]($style)'
+format = '[py (${version} )(\($virtualenv\) )]($style)'
 style ="bold yellow" # "117"
 version_format='v${major}.${minor}'
+
+[nodejs]
+format = '[$symbol ($version )]($style)'
+version_format='v${major}.${minor}'
+symbol = 'node'
 
 [time]
 # disabled = false

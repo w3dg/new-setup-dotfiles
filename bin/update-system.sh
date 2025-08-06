@@ -136,4 +136,7 @@ ulimit -n $BEFORE_ULIMIT_CHANGE
 print_bold_green "Running global node modules update"
 npm list -g | sed -E -e 's|^/.*$||g' -e 's/├──//g' -e 's/└──//g' -e 's/@[0-9]+\.[0-9]+\.[0-9]+//g' | xargs npm i -g
 
+print_bold_yellow "Running global cargo packages update"
+cargo install --list | awk '/v/ {print $1}' | xargs cargo install
+
 print_bold_green "Updates finished."

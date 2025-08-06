@@ -2,6 +2,14 @@
 local wezterm = require 'wezterm'
 local mux = wezterm.mux
 local act = wezterm.action
+local current_theme = 'dark'
+
+local themes = {
+  light = 'Tomorrow',
+  dark =  'Tomorrow (dark) (terminal.sexy)',
+    -- dark = 'carbonfox',
+    -- light = 'dayfox',
+}
 
 -- This will hold the configuration.
 local config = wezterm.config_builder()
@@ -15,9 +23,8 @@ config.initial_rows = 35
 -- or, changing the font size and color scheme.
 -- https://wezterm.org/colorschemes
 config.font_size = 13
-config.color_scheme = 'Vs Code Dark+ (Gogh)'
--- light
--- config.color_scheme = 'Vs Code Light+ (Gogh)'
+config.color_scheme = themes["dark"]
+
 
 config.max_fps = 120
 config.animation_fps = 1
@@ -30,9 +37,10 @@ config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
 -- Font families with fallbacks
 config.font = wezterm.font_with_fallback {
-    'LiterationMono Nerd Font',
-    'RobotoMono Nerd Font',
     'NotoMono Nerd Font',
+    'RobotoMono Nerd Font',
+    'Inconsolata Nerd Font',
+    'FiraCode Nerd Font',
     'JetBrainsMono Nerd Font',
     'Noto Color Emoji'
     }
@@ -43,6 +51,20 @@ config.scrollback_lines = 1000000
 
 -- Keybinds
 config.keys = {}
+
+-- Theme toggle
+wezterm.on('toggle-theme', function(window, _)
+  current_theme = current_theme == 'dark' and 'light' or 'dark'
+  window:set_config_overrides({
+    color_scheme = themes[current_theme],
+  })
+end)
+
+table.insert(config.keys, {
+  key = "T",
+  mods = "SHIFT|ALT",
+  action = wezterm.action.EmitEvent("toggle-theme"),
+})
 
 -- Pane management
 for _, v in ipairs({

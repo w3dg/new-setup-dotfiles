@@ -16,6 +16,6 @@ map [fullscreen] r reload
 map [fullscreen] R rotate
 map [fullscreen] i recolor
 
-include catppuccin-mocha
-# include lighthaus
+# include catppuccin-mocha
+include lighthaus
 # include coffee

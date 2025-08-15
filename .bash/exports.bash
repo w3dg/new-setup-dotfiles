@@ -16,20 +16,24 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # FZF
 export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 export FZF_DEFAULT_OPTS='--layout=reverse --keep-right'
-# base16 tomorrow night https://github.com/tinted-theming/tinted-fzf/blob/main/sh/base16-tomorrow-night.sh
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
-" --color=bg+:#282a2e,bg:#1d1f21,spinner:#8abeb7,hl:#81a2be"\
-" --color=fg:#b4b7b4,header:#81a2be,info:#f0c674,pointer:#8abeb7"\
-" --color=marker:#8abeb7,fg+:#e0e0e0,prompt:#f0c674,hl+:#81a2be"
 
-# For catppuccin
-# export FZF_DEFAULT_OPTS=" \
-# --color=spinner:#f5e0dc,hl:#f38ba8 \
-# --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
-# --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
-# --color=selected-bg:#45475a \
-# --color=border:#313244,label:#cdd6f4 \
-# --layout=reverse --keep-right"
+# tokyo night
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
+" --color=bg+:#16161e,bg:#1a1b26,spinner:#b4f9f8,hl:#2ac3de"\
+" --color=fg:#787c99,header:#2ac3de,info:#0db9d7,pointer:#b4f9f8"\
+" --color=marker:#b4f9f8,fg+:#cbccd1,prompt:#0db9d7,hl+:#2ac3de"
+
+# classic light
+# export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
+# " --color=bg+:#e0e0e0,bg:#f5f5f5,spinner:#75b5aa,hl:#6a9fb5"\
+# " --color=fg:#505050,header:#6a9fb5,info:#f4bf75,pointer:#75b5aa"\
+# " --color=marker:#75b5aa,fg+:#202020,prompt:#f4bf75,hl+:#6a9fb5"
+
+# classic dark
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
+" --color=bg+:#202020,bg:#151515,spinner:#75b5aa,hl:#6a9fb5"\
+" --color=fg:#b0b0b0,header:#6a9fb5,info:#f4bf75,pointer:#75b5aa"\
+" --color=marker:#75b5aa,fg+:#e0e0e0,prompt:#f4bf75,hl+:#6a9fb5"
 
 # Bat themes
 export BAT_THEME="base16"

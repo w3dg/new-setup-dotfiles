@@ -162,6 +162,10 @@ fzman() {
     man $(echo $query | awk '{ gsub(/[()]/, ""); print  $2" "$1 }')
 }
 
+table() {
+    column -t -s, "$@"
+}
+
 # Grep current directories' files for todos etc
 todos() {
 	rg 'TODO|FIXME|WARN|BUG'

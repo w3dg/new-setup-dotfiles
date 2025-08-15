@@ -5,10 +5,8 @@ local act = wezterm.action
 local current_theme = 'dark'
 
 local themes = {
-  light = 'Tomorrow',
-  dark =  'Tomorrow (dark) (terminal.sexy)',
-    -- dark = 'carbonfox',
-    -- light = 'dayfox',
+  light = 'Classic Light (base16)',
+  dark =  'Classic Dark (base16)',
 }
 
 -- This will hold the configuration.
@@ -37,11 +35,11 @@ config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
 -- Font families with fallbacks
 config.font = wezterm.font_with_fallback {
+    'Hack Nerd Font',
+    'JetBrainsMono Nerd Font',
+    'FiraCode Nerd Font',
     'NotoMono Nerd Font',
     'RobotoMono Nerd Font',
-    'Inconsolata Nerd Font',
-    'FiraCode Nerd Font',
-    'JetBrainsMono Nerd Font',
     'Noto Color Emoji'
     }
 

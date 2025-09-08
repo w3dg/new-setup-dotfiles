@@ -103,7 +103,7 @@ PS1+='$(branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null); [[ -n $branch ]] 
 PS1+='\[${PROMPT_COLORS[0]}\]\$\[${COLOR256[256]}\] '
 
 # set the theme
-set_prompt_colors 2
+set_prompt_colors 25
 
 # Prompt command
 _prompt_command() {

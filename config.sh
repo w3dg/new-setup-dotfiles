@@ -179,5 +179,5 @@ mkdir -p $HOME/code/go
 export GOPATH="$HOME/code/go"
 export PATH=${GOPATH:=$HOME/go}/bin:$PATH # Add Go bin to path
 
-while read package; do echo go install $package; done < go-binary-packages.txt
+while read package; do go install $package; done < $BASEDIR/go-binary-packages.txt
 # golang.org/x/tools/cmd/{gopls,staticcheck} should be prompted to be installed from the go vscode extension anyways

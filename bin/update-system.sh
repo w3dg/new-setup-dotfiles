@@ -139,4 +139,9 @@ npm list -g | sed -E -e 's|^/.*$||g' -e 's/├──//g' -e 's/└──//g' -e 
 print_bold_yellow "Running global cargo packages update"
 cargo install --list | awk '/v/ {print $1}' | xargs cargo install
 
+print_bold_blue "Running go cli tools update"
+BASEDIR=$HOME/new-setup-dotfiles
+while read package; do go install $package; done < $BASEDIR/go-binary-packages.txt
+
 print_bold_green "Updates finished."
+

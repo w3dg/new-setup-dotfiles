@@ -109,3 +109,6 @@ alias ghb="gh browse > /dev/null 2>/dev/null"
 alias iv="rlwrap ivy -prompt 'ivy% '"
 
 alias ipython="ipython3 --no-banner"
+
+# ephemeral installation of copyparty https://github.com/9001/copyparty
+alias copyparty="uv tool run copyparty"

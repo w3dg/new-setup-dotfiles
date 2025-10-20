@@ -250,3 +250,31 @@ privatesession() {
 update_global_npm_packages() {
     npm list -g | awk '{ print $2}' | sed -E "s/@[0-9]+\.[0-9]+\.[0-9]+//g" | xargs npm i -g
 }
+
+# EXPERIMENTING!!
+
+# c is a shell function that attempts to expand to cd to relative or
+# absolute paths, otherwise trying zoxide for jumping
+function c() {
+    if [ $# -eq 0 ]; then
+        # No arguments → just cd to $HOME
+        cd ~ || return
+        return
+    fi
+
+    local target="$1"
+
+    # Expand ~ and relative paths
+    case "$target" in
+        ~*|/*) : ;;                # already expanded by the shell
+        *) target="./$target" ;;   # relative paths
+    esac
+
+    if [ -d "$target" ]; then
+        # It's a real directory → use builtin cd
+        builtin cd "$target" || return
+    else
+        # Not a dir → fallback to zoxide
+        z "$1"
+    fi
+}

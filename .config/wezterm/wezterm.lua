@@ -5,8 +5,11 @@ local act = wezterm.action
 local current_theme = 'dark'
 
 local themes = {
-  light = 'Classic Light (base16)',
-  dark =  'Classic Dark (base16)',
+  -- light = 'Builtin Tango Light',
+  -- dark = 'Builtin Tango Dark',
+  light = 'Vs Code Light+ (Gogh)',
+  dark = 'Violet Dark',
+  -- dark = 'Vs Code Dark+ (Gogh)',
 }
 
 -- This will hold the configuration.
@@ -18,12 +21,6 @@ local config = wezterm.config_builder()
 config.initial_cols = 135
 config.initial_rows = 35
 
--- or, changing the font size and color scheme.
--- https://wezterm.org/colorschemes
-config.font_size = 13
-config.color_scheme = themes["dark"]
-
-
 config.max_fps = 120
 config.animation_fps = 1
 config.window_background_opacity = 1
@@ -33,15 +30,19 @@ config.webgpu_power_preference = "HighPerformance"
 config.prefer_egl = true
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
+
+-- or, changing the font size and color scheme.
+-- https://wezterm.org/colorschemes
+config.font_size = 13
+config.color_scheme = themes["dark"]
+
 -- Font families with fallbacks
 config.font = wezterm.font_with_fallback {
-    'Hack Nerd Font',
-    'JetBrainsMono Nerd Font',
-    'FiraCode Nerd Font',
-    'NotoMono Nerd Font',
-    'RobotoMono Nerd Font',
+    'MonaSpiceNe Nerd Font Mono',
+    'Hack Nerd Font Mono',
+    'JetBrainsMono Nerd Font Mono',
     'Noto Color Emoji'
-    }
+}
 
 -- Scrollbar
 config.enable_scroll_bar = true

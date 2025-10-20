@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 BACKUP=backup-$(hostname)-$(date --iso-8601).tar.gz
 DIR=$1
 DIR_TO_BACKUP=${DIR:=.}

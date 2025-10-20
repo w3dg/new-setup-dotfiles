@@ -1,28 +1,14 @@
 format = """
-$directory\
-$git_branch\
-$git_status\
-$character"""
-
-right_format = """
-$python\
-$nodejs\
-$cmd_duration$status\
 $username\
 $hostname\
-"""
-
-[username]
-style_user = 'white'
-style_root = 'red bold'
-format = '[$user]($style)'
-show_always = true
-disabled = true
-
-[hostname]
-ssh_only = false
-format = '[@$hostname](white)'
-disabled = true
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration\
+$line_break\
+$python\
+$character"""
 
 [directory]
 style = "bold blue"
@@ -30,19 +16,16 @@ truncation_length = 2
 fish_style_pwd_dir_length = 1
 
 [character]
-# success_symbol = '[](bold green)'
-success_symbol = '[%](bold green)'
-error_symbol = '[x](bold red)'
-
-[fill]
-symbol = ' '
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
 
 [git_branch]
 format = "[$branch]($style)"
 style = "white"
 
 [git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218)($ahead_behind$stashed)]($style) "
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
 style = "cyan"
 conflicted = "​"
 untracked = "​"
@@ -52,31 +35,14 @@ renamed = "​"
 deleted = "​"
 stashed = "≡"
 
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "225"
+
 [cmd_duration]
 format = "[$duration]($style) "
 style = "yellow"
 
-[status]
-format = "[$status]($style)"
-style = "bold red"
-disabled = false
-pipestatus = true
-pipestatus_format = "[$pipestatus]($style) "
-pipestatus_separator = "|"
-map_symbol = false
-
 [python]
-format = '[py (${version} )(\($virtualenv\) )]($style)'
-style ="bold yellow" # "117"
-version_format='v${major}.${minor}'
-
-[nodejs]
-format = '[$symbol ($version )]($style)'
-version_format='v${major}.${minor}'
-symbol = 'node'
-
-[time]
-# disabled = false
-style = "bold white"
-format = '[$time]($style) '
-time_format = '%H:%M'
+format = "[$virtualenv]($style) "
+style = "250"

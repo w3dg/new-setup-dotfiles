@@ -8,16 +8,16 @@ sudo apt update -y && sudo apt upgrade -y
 sudo apt install -y  git vim wget curl neovim
 
 # Run linking script for linking up dotfiles
-bash $BASEDIR/link.sh
+bash "$BASEDIR"/link.sh
 
 # Install Fira Code Nerd Font
 curl -OLs https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.tar.xz
 curl -OLs https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CommitMono.tar.xz
 curl -OLs https://github.com/ryanoasis/nerd-fonts/releases/latest/download/BitstreamVeraSansMono.tar.xz
 
-mv $BASEDIR/FiraCode.tar.xz /tmp
-mv $BASEDIR/CommitMono.tar.xz /tmp
-mv $BASEDIR/BitstreamVeraSansMono.tar.xz /tmp
+mv "$BASEDIR"/FiraCode.tar.xz /tmp
+mv "$BASEDIR"/CommitMono.tar.xz /tmp
+mv "$BASEDIR"/BitstreamVeraSansMono.tar.xz /tmp
 
 cd /tmp
 
@@ -34,7 +34,7 @@ rm /tmp/FiraCode.tar.xz
 rm /tmp/CommitMono.tar.xz
 rm /tmp/BitstreamVeraSansMono.tar.xz
 
-cd $BASEDIR
+cd "$BASEDIR"
 
 # Install zsh, ohmyzsh, starship, zsh-autosuggestions, fast-syntax-highlighting
 sudo apt install -y zsh
@@ -61,7 +61,8 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 BEFORE_ULIMIT_CHANGE=$(ulimit -n)
 ulimit -n 65535
-xargs brew install < $BASEDIR/Brewfile
+# xargs brew install < $BASEDIR/Brewfile
+brew bundle --file=./Brewfile
 ulimit -n $BEFORE_ULIMIT_CHANGE
 
 # Set bat themes https://github.com/catppuccin/bat

@@ -227,3 +227,4 @@ function gitcd() {
 # alias grv='git remote -v'
 # alias gittree='git log --graph --full-history --all --pretty=format:"%h%x09%d%x20%s"'
 # alias gcz='git cz -a' # assuming you have commitizen installed and configured
+alias glogf='git log --pretty=fuller' # view full commit details with body

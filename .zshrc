@@ -123,6 +123,7 @@ function gitcd() {
 
 # Use commitizen for conventional git commits
 alias gcz="git cz"
+alias glogf='git log --pretty=fuller' # view full commit details with body
 
 source ~/.bash/npm-completion.bash # npm completion
 source ~/.bash/pandoc-completion.bash # pandoc completion

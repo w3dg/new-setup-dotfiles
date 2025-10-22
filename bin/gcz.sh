@@ -31,7 +31,7 @@ available_commit_types=("feat" "fix" "docs" "style" "refactor" "perf" "test" "bu
 final_commit_msg=""
 
 selected_commit_type=$(gum filter --header="Type of commit" ${available_commit_types[@]})
-if [ $? -ne 0 -o -z $selected_commit_type ]; then
+if [ $? -ne 0 ] || [ -z $selected_commit_type ]; then
     exit
 fi
 final_commit_msg=$selected_commit_type
@@ -72,14 +72,38 @@ final_commit_msg="${final_commit_msg}: ${commit_message}"
 
 # Description of the message
 description=$(gum write --placeholder "Details of this change")
-if [ ! -z "${description}" ]; then
-    # TODO BREAKING-CHANGE: trailer should be present in the description if the commit is a breaking change
-    # https://github.com/commitizen/cz-conventional-changelog/blob/master/engine.js
 
-    gum confirm "Commit changes?" && git commit -m "${final_commit_msg}
+# Breaking change description (if breaking change)
+breaking_description=""
+if [ $is_breaking -eq 0 ]; then
+    breaking_description=$(gum write --placeholder "Describe the breaking change")
+    if [ -z "${breaking_description}" ]; then
+        echo "Breaking change description is required for breaking changes"
+        exit 1
+    fi
+fi
 
-    ${description}"
+# Build final commit message with body and footers
+if [ ! -z "${description}" ] || [ ! -z "${breaking_description}" ]; then
+    commit_body=""
+
+    # Add description if present
+    if [ ! -z "${description}" ]; then
+        commit_body="${description}"
+    fi
+
+    # Add BREAKING CHANGE footer if present
+    if [ ! -z "${breaking_description}" ]; then
+        if [ ! -z "${commit_body}" ]; then
+            commit_body="${commit_body}
+
+BREAKING CHANGE: ${breaking_description}"
+        else
+            commit_body="BREAKING CHANGE: ${breaking_description}"
+        fi
+    fi
+
+    gum confirm "Commit changes?" && git commit -m "${final_commit_msg}" -m "${commit_body}"
 else
     gum confirm "Commit changes?" && git commit -m "${final_commit_msg}"
 fi
-

@@ -9,14 +9,14 @@ export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="afowler"
-
-# fpath+=($HOME/.zsh/pure)
-# autoload -U promptinit; promptinit
-# prompt pure
-
+ZSH_THEME="gentoo" # "garyblessington"
 ZSH_THEME=""
-eval "$(starship init zsh)"
+
+fpath+=($HOME/.zsh/pure)
+autoload -U promptinit; promptinit
+prompt pure
+
+# eval "$(starship init zsh)"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"

@@ -33,3 +33,11 @@ export PATH=$PATH:$JAVA_HOME/bin
 # go
 export GOPATH="$HOME/code/go"
 export PATH=${GOPATH:=$HOME/go}/bin:$PATH # Add Go bin to path
+
+# pnpm global setup for global packages
+export PNPM_HOME="/home/dg/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

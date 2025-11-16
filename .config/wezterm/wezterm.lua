@@ -5,11 +5,8 @@ local act = wezterm.action
 local current_theme = 'dark'
 
 local themes = {
-  -- light = 'Builtin Tango Light',
-  -- dark = 'Builtin Tango Dark',
-  light = 'Vs Code Light+ (Gogh)',
-  dark = 'Violet Dark',
-  -- dark = 'Vs Code Dark+ (Gogh)',
+  light = 'nord-light',
+  dark = 'nord',
 }
 
 -- This will hold the configuration.
@@ -38,7 +35,7 @@ config.color_scheme = themes["dark"]
 
 -- Font families with fallbacks
 config.font = wezterm.font_with_fallback {
-    'MonaSpiceNe Nerd Font Mono',
+    'NotoMono Nerd Font Mono',
     'Hack Nerd Font Mono',
     'JetBrainsMono Nerd Font Mono',
     'Noto Color Emoji'

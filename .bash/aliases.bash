@@ -112,3 +112,6 @@ alias ipython="ipython3 --no-banner"
 
 # ephemeral installation of copyparty https://github.com/9001/copyparty
 alias copyparty="uv tool run copyparty"
+
+# Cloudflare Warp CLI
+alias warpon='warp-cli connect' warpoff='warp-cli disconnect'

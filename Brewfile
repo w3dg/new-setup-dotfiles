@@ -21,6 +21,7 @@ glow
 go
 gum
 hexyl
+hugo
 hyperfine
 imagemagick
 imgcat
@@ -29,9 +30,11 @@ lazygit
 licensor
 lolcat
 mdbook
+mypy
 numi-cli
 pastel
 ripgrep
+ruff
 sevenzip
 shellcheck
 spark

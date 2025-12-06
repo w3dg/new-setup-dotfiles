@@ -12,11 +12,11 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="gentoo" # "garyblessington"
 ZSH_THEME=""
 
-fpath+=($HOME/.zsh/pure)
-autoload -U promptinit; promptinit
-prompt pure
+# fpath+=($HOME/.zsh/pure)
+# autoload -U promptinit; promptinit
+# prompt pure
 
-# eval "$(starship init zsh)"
+eval "$(starship init zsh)"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -114,6 +114,7 @@ source ~/.bash/exports.bash        # Exports
 source ~/.bash/functions.bash      # Custom functions
 source ~/.bash/aliases.bash        # Aliases
 source ~/.bash/completion-for-pnpm.zsh # pnpm completion
+source ~/.bash/flatpak-aliases.bash # Flatpak aliases
 
 # git aliases handled by omz custom one here
 function gitcd() {
@@ -141,9 +142,18 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 # Load Rust into Path
 [ -f "$HOME/.cargo/env" ] && source $HOME/.cargo/env
 
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "$HOME/.local/google-cloud-sdk/path.zsh.inc" ]; then
+    . "$HOME/.local/google-cloud-sdk/path.zsh.inc";
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f "$HOME/.local/google-cloud-sdk/completion.zsh.inc" ]; then
+    . "$HOME/.local/google-cloud-sdk/completion.zsh.inc";
+fi
+
 export GPG_TTY=$(tty)
 
-# alias reload="source ~/.zshrc"
 alias reload="exec zsh"
 alias glog='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset" --date=short' # glods
 

@@ -10,12 +10,13 @@ echo "Today is $(date +"%a, %F %T")"
 
 [[ -f ~/.dircolors ]] && eval "$(dircolors -b ~/.dircolors)"
 
-source ~/.bash/bindings.bash       # Bindings
-source ~/.bash/shopts.bash         # Shopts
-source ~/.bash/exports.bash        # Exports
-source ~/.bash/functions.bash      # Custom functions
-source ~/.bash/aliases.bash        # Aliases
-source ~/.bash/git_aliases.bash    # Git aliases
+source ~/.bash/bindings.bash        # Bindings
+source ~/.bash/shopts.bash          # Shopts
+source ~/.bash/exports.bash         # Exports
+source ~/.bash/functions.bash       # Custom functions
+source ~/.bash/aliases.bash         # Aliases
+source ~/.bash/git_aliases.bash     # Git aliases
+source ~/.bash/flatpak-aliases.bash # Git aliases
 
 source ~/.bash/npm-completion.bash # npm completion
 source ~/.bash/completion-pnpm.bash # pnpm completion

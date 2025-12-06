@@ -16,4 +16,4 @@ map [fullscreen] r reload
 map [fullscreen] R rotate
 map [fullscreen] i recolor
 
-include nord
+include catppuccin-mocha

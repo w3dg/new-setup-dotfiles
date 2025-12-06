@@ -5,8 +5,8 @@ local act = wezterm.action
 local current_theme = 'dark'
 
 local themes = {
-  light = 'nord-light',
-  dark = 'nord',
+  light = 'Brewer (light) (terminal.sexy)',
+  dark =  'Hemisu Dark (Gogh)',
 }
 
 -- This will hold the configuration.
@@ -35,15 +35,13 @@ config.color_scheme = themes["dark"]
 
 -- Font families with fallbacks
 config.font = wezterm.font_with_fallback {
-    'NotoMono Nerd Font Mono',
-    'Hack Nerd Font Mono',
     'JetBrainsMono Nerd Font Mono',
     'Noto Color Emoji'
 }
 
 -- Scrollbar
-config.enable_scroll_bar = true
-config.scrollback_lines = 1000000
+config.enable_scroll_bar = false -- clean look, but still has ability to scroll back
+config.scrollback_lines = 1000000 -- huge scroll history
 
 -- Keybinds
 config.keys = {}

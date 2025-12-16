@@ -278,3 +278,16 @@ function c() {
         z "$1"
     fi
 }
+
+function trim_zsh_history() {
+    # Backup first
+    cp ~/.zsh_history ~/.zsh_history.backup
+    cat -n ~/.zsh_history | sort -t ';' -k 2 -k 1n | uniq -f 1 | sort -n | cut -f 2- > ~/.zsh_history.tmp && mv ~/.zsh_history.tmp ~/.zsh_history
+}
+
+function trim_bash_history() {
+    # Backup first
+    cp ~/.bash_history ~/.bash_history.backup
+    # Remove duplicates (keeps last occurrence)
+    awk '!seen[$0]++' ~/.bash_history > ~/.bash_history.tmp && mv ~/.bash_history.tmp ~/.bash_history
+}

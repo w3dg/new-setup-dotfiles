@@ -9,14 +9,14 @@ export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="gentoo" # "garyblessington"
-ZSH_THEME=""
+ZSH_THEME="robbyrussell" # "garyblessington" # "gentoo"
 
 # fpath+=($HOME/.zsh/pure)
 # autoload -U promptinit; promptinit
 # prompt pure
 
-eval "$(starship init zsh)"
+# ZSH_THEME=""
+# eval "$(starship init zsh)"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -85,6 +85,12 @@ plugins=(
 
 # Disable highlight on paste https://github.com/zsh-users/zsh/blob/ac0dcc9a63dc2a0edc62f8f1381b15b0b5ce5da3/NEWS#L37-L42
 zle_highlight+=(paste:none)
+
+# History mmanagement
+setopt HIST_IGNORE_ALL_DUPS    # Remove older duplicates
+setopt HIST_EXPIRE_DUPS_FIRST  # Expire duplicates first when trimming history
+setopt HIST_FIND_NO_DUPS       # Don't show duplicates in search
+setopt HIST_SAVE_NO_DUPS       # Don't write duplicates to file
 
 source $ZSH/oh-my-zsh.sh
 

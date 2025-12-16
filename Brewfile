@@ -6,6 +6,7 @@ cmatrix
 cowsay
 dust
 dysk
+entr
 exiftool
 eza
 fastfetch
@@ -32,6 +33,7 @@ lolcat
 mdbook
 mypy
 numi-cli
+pandoc
 pastel
 ripgrep
 ruff
@@ -41,6 +43,7 @@ spark
 speedtest-cli
 starship
 tealdeer
+tinymist
 tokei
 trash-cli
 typst

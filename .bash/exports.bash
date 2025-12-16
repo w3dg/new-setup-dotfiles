@@ -4,6 +4,9 @@ export LSCOLORS='exfxcxdxbxegedabagacad'
 
 export PROMPT_DIRTRIM=3
 
+# Don't put duplicate lines in history
+export HISTCONTROL=ignoredups:erasedups
+
 # export EDITOR="nano"
 export EDITOR="micro"
 export LANG="en_US.UTF-8"

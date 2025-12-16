@@ -6,7 +6,7 @@ local current_theme = 'dark'
 
 local themes = {
   light = 'Brewer (light) (terminal.sexy)',
-  dark =  'Breeze (Gogh)'
+  dark =  'MaterialDesignColors'
 }
 
 -- This will hold the configuration.

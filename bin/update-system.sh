@@ -150,4 +150,3 @@ else
 fi
 
 print_bold_green "Updates finished."
-

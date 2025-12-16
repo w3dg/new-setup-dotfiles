@@ -6,7 +6,7 @@ local current_theme = 'dark'
 
 local themes = {
   light = 'Brewer (light) (terminal.sexy)',
-  dark =  'Hemisu Dark (Gogh)',
+  dark =  'Breeze (Gogh)'
 }
 
 -- This will hold the configuration.
@@ -30,11 +30,14 @@ config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
 -- or, changing the font size and color scheme.
 -- https://wezterm.org/colorschemes
-config.font_size = 13
+config.font_size = 11
 config.color_scheme = themes["dark"]
 
 -- Font families with fallbacks
 config.font = wezterm.font_with_fallback {
+    'NotoMono Nerd Font Mono',
+    'RobotoMono Nerd Font Mono',
+    'FiraCode Nerd Font Mono',
     'JetBrainsMono Nerd Font Mono',
     'Noto Color Emoji'
 }

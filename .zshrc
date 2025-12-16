@@ -42,7 +42,7 @@ DISABLE_MAGIC_FUNCTIONS="true"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -169,14 +169,4 @@ elif [ $XDG_SESSION_TYPE = 'wayland' ]; then
   alias clip="wl-copy"
 fi
 
-greeting() {
-    UNAME_OUTPUT=$(uname -a)
-    echo -e "\e[1mHostname: \e[0;32m$(echo $UNAME_OUTPUT | cut -d' ' -f2)\e[0m"
-    echo -e "\e[1mKernel: \e[0;33m$(echo $UNAME_OUTPUT | cut -d' ' -f3)\e[0m"
-    echo -e "\e[1mUptime: \e[0;36m$(uptime -p | cut -d' ' -f 2-)\e[0m"
-    echo -e "\e[1mNetwork: \e[0;35m$(ip addr show scope global | grep inet | awk '{print $2}')\e[0m"
-    echo "Today is $(date +"%a, %b %d")"
-}
-
 [[ $PWD = $HOME ]] && [[ -f ~/todo.md ]] && glow ~/todo.md || true
-greeting

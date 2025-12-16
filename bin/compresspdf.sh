@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# -dPDFSETTINGS=/screen	Has a lower quality and smaller size. (72 dpi)
+# -dPDFSETTINGS=/ebook	Has a better quality, but has a slightly larger size (150 dpi)
+# -dPDFSETTINGS=/prepress	Output is of a higher size and quality (300 dpi)
+# -dPDFSETTINGS=/printer	Output is of a printer type quality (300 dpi)
+# -dPDFSETTINGS=/default	Selects the output which is useful for multiple purposes. Can cause large PDFS.
+
+file="$1"
+
+if [ -z "$file" ]; then
+    echo "no file specified"
+    exit 1
+fi
+
+filename="${file%%.*}"
+ext="${file##*.}"
+output="${filename}_compressed.${ext}"
+
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$output" "$file"

@@ -6,7 +6,7 @@ local current_theme = 'dark'
 
 local themes = {
   light = 'Brewer (light) (terminal.sexy)',
-  dark =  'MaterialDesignColors'
+  dark =  'Dark Pastel',
 }
 
 -- This will hold the configuration.
@@ -27,18 +27,18 @@ config.webgpu_power_preference = "HighPerformance"
 config.prefer_egl = true
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
-
 -- or, changing the font size and color scheme.
 -- https://wezterm.org/colorschemes
-config.font_size = 11
+config.font_size = 12
 config.color_scheme = themes["dark"]
 
 -- Font families with fallbacks
 config.font = wezterm.font_with_fallback {
-    'NotoMono Nerd Font Mono',
-    'RobotoMono Nerd Font Mono',
-    'FiraCode Nerd Font Mono',
+    'CodeNewRoman Nerd Font Mono',
     'JetBrainsMono Nerd Font Mono',
+    'CaskaydiaCove Nerd Font Mono',
+    'NotoMono Nerd Font Mono',
+    'FiraCode Nerd Font Mono',
     'Noto Color Emoji'
 }
 

@@ -32,7 +32,7 @@ _precmd_main() {
     if [[ -n $SSH_CLIENT ]]; then
         SSH_COLOR="220"
     else
-        SSH_COLOR="169"
+        SSH_COLOR="210"
     fi
 
     # Refresh VCS info
@@ -54,17 +54,17 @@ PROMPT+='%F{%(#..69)}%B%n%b%f '
 PROMPT+='%F{$SSH_COLOR}%m%f '
 
 # 4. uname of kernel
-PROMPT+='%F{78}${CACHED_ZONENAME}${CACHED_UNAME}%f '
+PROMPT+='%F{120}${CACHED_ZONENAME}${CACHED_UNAME}%f '
 
 
 # 5. Current Working Dir
-PROMPT+='%F{174}%c%f '
+PROMPT+='%F{217}%c%f '
 
 # 6. Git Branch (populated by vcs_info in precmd)
 PROMPT+='${vcs_info_msg_0_}'
 
 # 7. Prompt Character ($ for user, # for root) and reset
-PROMPT+='%F{37}%#%f '
+PROMPT+='%F{39}%#%f '
 
 # ZSH_THEME=""
 # fpath+=($HOME/.zsh/pure)

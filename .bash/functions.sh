@@ -181,7 +181,12 @@ cleangit () {
 }
 
 color256() {
-	for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
+    for i in {0..255}; do
+        printf "\x1b[48;5;%dm %3d \x1b[0m" "$i" "$i"
+        if [ $((($i + 1) % 16)) -eq 0 ]; then
+            printf "\n"
+        fi
+    done
 }
 
 # Python Virtual Env activations

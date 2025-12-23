@@ -42,6 +42,7 @@ alias mc='micro'
 alias m='micro'
 # Alias grep to ripgrep. Project home page: https://github.com/BurntSushi/ripgrep
 alias grep='rg'
+alias hl='rg --passthru'
 # Alias find to fd. Project home page - https://github.com/sharkdp/fd
 alias find='fd'
 # Alias curl to httpie - Project home page - https://github.com/httpie/httpie/

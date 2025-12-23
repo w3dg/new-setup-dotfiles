@@ -10,18 +10,23 @@ export HISTCONTROL=ignoredups:erasedups
 # export EDITOR="nano"
 export EDITOR="micro"
 export LANG="en_US.UTF-8"
-export HISTSIZE=10000                          # big big history (default is 500)
-export HISTFILESIZE=$HISTSIZE                   # big big history
+export HISTSIZE=10000         # big big history (default is 500)
+export HISTFILESIZE=$HISTSIZE # big big history
 export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear:ll:sl:cl" # Dont record some commands
 # Save and reload the history after each command finishes
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
+export PAGER='less'
+# set bat as man pager
+export MANROFFOPT="-c"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # FZF
 export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 export FZF_DEFAULT_OPTS='--layout=reverse --keep-right --color 16'
 
 # Bat themes
-export BAT_THEME="base16"
+export BAT_THEME="ansi"
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'

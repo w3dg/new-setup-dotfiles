@@ -9,8 +9,64 @@ export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="robbyrussell" # "garyblessington" # "gentoo"
+# ZSH_THEME="robbyrussell"
 
+autoload -Uz vcs_info
+autoload -Uz add-zsh-hook
+setopt prompt_subst
+zstyle ':vcs_info:git:*' formats '%F{69}git:(%F{1}%b%F{69})%f '
+zstyle ':vcs_info:git:*' actionformats '%F{69}git:(%F{1}%b%F{69}|%F{1}%a%F{69})%f '
+readonly CACHED_UNAME=$(uname | tr '[:upper:]' '[:lower:]')
+readonly CACHED_ZONE=$(zonename 2>/dev/null | grep -q "^global$" && echo "GZ:" || echo "")
+
+_precmd_main() {
+    # Update Window Title
+    local user=$USER
+    local host=${HOST%%.*}
+    local pwd_short=${PWD/#$HOME/\~}
+    local ssh_prefix=
+    [[ -n $SSH_CLIENT ]] && ssh_prefix='[ssh] '
+    printf "\033]0;%s%s@%s:%s\007" "$ssh_prefix" "$user" "$host" "$pwd_short"
+
+    # Determine Host Color: Yellow (220) if SSH, otherwise Green (78)
+    if [[ -n $SSH_CLIENT ]]; then
+        SSH_COLOR="220"
+    else
+        SSH_COLOR="169"
+    fi
+
+    # Refresh VCS info
+    vcs_info
+}
+add-zsh-hook precmd _precmd_main
+
+# Construct the prompt
+# [(exit code)] <user> <hostname> <uname> <cwd> [git branch] <$|#>
+
+# 1. Exit code: Only shows if non-zero: (status)
+PROMPT='%(?..%F{1}%? %f)'
+
+# 2. Username: Red if root, otherwise your Color 69
+# %n is username, %B for bold. Ternary %# checks if root (#) or user (%)
+PROMPT+='%F{%(#..69)}%B%n%b%f '
+
+# 3. Hostname (different color if in ssh session)
+PROMPT+='%F{$SSH_COLOR}%m%f '
+
+# 4. uname of kernel
+PROMPT+='%F{78}${CACHED_ZONENAME}${CACHED_UNAME}%f '
+
+
+# 5. Current Working Dir
+PROMPT+='%F{174}%c%f '
+
+# 6. Git Branch (populated by vcs_info in precmd)
+PROMPT+='${vcs_info_msg_0_}'
+
+# 7. Prompt Character ($ for user, # for root) and reset
+PROMPT+='%F{37}%#%f '
+
+# ZSH_THEME=""
 # fpath+=($HOME/.zsh/pure)
 # autoload -U promptinit; promptinit
 # prompt pure
@@ -39,7 +95,7 @@ DISABLE_MAGIC_FUNCTIONS="true"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -78,7 +134,6 @@ DISABLE_MAGIC_FUNCTIONS="true"
 plugins=(
     git
     command-not-found
-    colored-man-pages
     zsh-autosuggestions
     fast-syntax-highlighting
 )
@@ -112,15 +167,17 @@ bindkey '^a' atuin-search
 # bindkey '^[[A' atuin-up-search
 # bindkey '^[OA' atuin-up-search
 
-
 setopt HIST_IGNORE_SPACE # ignore commands starting with space for sensitive stuff
 export HISTORY_IGNORE="(ls|ll|lsa|lls|cd|pwd|exit|sudo reboot|reboot|history|cd -|cd ..|clear|cl)"
 
-source ~/.bash/exports.bash        # Exports
-source ~/.bash/functions.bash      # Custom functions
-source ~/.bash/aliases.bash        # Aliases
-source ~/.bash/completion-for-pnpm.zsh # pnpm completion
-source ~/.bash/flatpak-aliases.bash # Flatpak aliases
+DIR_PREFIX="$HOME/.bash/"
+for file in "$DIR_PREFIX"/*.sh; do
+    source "$file"
+done
+
+for file in "$DIR_PREFIX"/*.zsh; do
+    source "$file"
+done
 
 # git aliases handled by omz custom one here
 function gitcd() {
@@ -128,8 +185,6 @@ function gitcd() {
   [ "$TOP" ] && cd "$TOP";
 }
 
-# Use commitizen for conventional git commits
-alias gcz="git cz"
 alias glogf='git log --pretty=fuller' # view full commit details with body
 
 source ~/.bash/npm-completion.bash # npm completion
@@ -138,7 +193,6 @@ source ~/.bash/pandoc-completion.bash # pandoc completion
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-#
 # nvm use stable 1>/dev/null
 
 # get latest major version number

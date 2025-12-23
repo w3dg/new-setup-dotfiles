@@ -10,37 +10,17 @@ echo "Today is $(date +"%a, %F %T")"
 
 [[ -f ~/.dircolors ]] && eval "$(dircolors -b ~/.dircolors)"
 
-source ~/.bash/bindings.bash        # Bindings
-source ~/.bash/shopts.bash          # Shopts
-source ~/.bash/exports.bash         # Exports
-source ~/.bash/functions.bash       # Custom functions
-source ~/.bash/aliases.bash         # Aliases
-source ~/.bash/git_aliases.bash     # Git aliases
-source ~/.bash/flatpak-aliases.bash # Git aliases
+DIR_PREFIX="$HOME/.bash/"
+for file in "$DIR_PREFIX"/*.sh; do
+    source "$file"
+done
 
-source ~/.bash/npm-completion.bash # npm completion
-source ~/.bash/completion-pnpm.bash # pnpm completion
-source ~/.bash/pandoc-completion.bash # pandoc completion
+for file in "$DIR_PREFIX"/*.bash; do
+    source "$file"
+done
 
 # fzf - Website: https://github.com/junegunn/fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# export PS1='\[\033]0;Bash \007\]'
-
-# prompt symbol - ❯
-
-# prompt_command() {
-#   # sync history between terminals
-#   history -a; # append to history file the current session
-#   history -c; # clear history for current session
-#   history -r; # read in the latest everywhere
-#  }
-#
-# export PROMPT_COMMAND=prompt_command
-
-# export PS1="\[\e[38;5;47m\]\u\[\e[38;5;156m\]@\[\e[38;5;227m\]\h \[\e[38;5;231m\]\w \[\033[0m\]$ "
-# export PS2="... "
-
 
 # https://github.com/bahamas10/dotfiles/blob/master/bashrc
 # Prompt
@@ -106,15 +86,20 @@ PS1+='\[${PROMPT_COLORS[0]}\]\$\[${COLOR256[256]}\] '
 # set the theme
 set_prompt_colors 25
 
+# sets text in the title bar
+_set_title() {
+    local user=$USER
+    local host=${HOSTNAME%%.*}
+    local pwd=${PWD/#$HOME/\~}
+    local ssh=
+    [[ -n $SSH_CLIENT ]] && ssh='[ssh] '
+    printf "\033]0;%s%s@%s:%s\007" "$ssh" "$user" "$host" "$pwd"
+}
+
 # Prompt command
 _prompt_command() {
-        local user=$USER
-        local host=${HOSTNAME%%.*}
-        local pwd=${PWD/#$HOME/\~}
-        local ssh=
-        [[ -n $SSH_CLIENT ]] && ssh='[ssh] '
-        printf "\033]0;%s%s@%s:%s\007" "$ssh" "$user" "$host" "$pwd"
-        #   # sync history between terminals
+        _set_title
+        # sync history between terminals
         history -a; # append to history file the current session
         history -c; # clear history for current session
         history -r; # read in the latest everywhere

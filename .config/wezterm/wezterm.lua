@@ -94,10 +94,10 @@ for _, v in ipairs({
 -- }) do table.insert(config.keys, {mods="ALT", key=v[1], action=v[2]}) end
 
 -- Maximize on startup
--- wezterm.on('gui-startup', function(cmd)
---   local tab, pane, window = mux.spawn_window(cmd or {})
---   window:gui_window():maximize()
--- end)
+wezterm.on('gui-startup', function(cmd)
+  local tab, pane, window = mux.spawn_window(cmd or {})
+  window:gui_window():maximize()
+end)
 
 -- Mouse bindings
 config.mouse_bindings = {

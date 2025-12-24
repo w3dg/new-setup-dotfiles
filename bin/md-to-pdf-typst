@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 if [ $# -ne 1 ]; then
-	echo "Correct number of arguments not specified"
-	echo "Usage: $0 <markdown-file>"
-	exit
+    echo "Correct number of arguments not specified"
+    echo "Usage: $0 <markdown-file>"
+    exit
 fi
 
 outfile=$(basename "$1" .md)
@@ -12,10 +12,14 @@ echo "Converting file using pandoc and Typst"
 
 tmpfile=$(mktemp)
 
-pandoc "$1" -o "$tmpfile" --from markdown+yaml_metadata_block+raw_html --to typst
-[[ "$?" -ne 0 ]] && echo "Could not convert from md to typ" && exit 1
+if ! pandoc "$1" -o "$tmpfile" --from markdown+yaml_metadata_block+raw_html --to typst; then
+    echo "Could not convert from md to typ"
+    exit 1
+fi
 
-typst compile "$tmpfile" "./${outfile}.pdf"
-[[ "$?" -ne 0 ]] && echo "Could not convert from typ to pdf" && exit 1
+if ! typst compile "$tmpfile" "./${outfile}.pdf"; then
+    echo "Could not convert from typ to pdf"
+    exit 1
+fi
 
 echo "Generated file $outfile-generated.pdf"

@@ -11,4 +11,4 @@ query=$(curl -s --connect-timeout 5 --max-time 10 $URL)
 [[ "$query" == *"No Definitions Found"* ]] && echo "No Definitions Found" && exit 0
 
 # get all definitions line by line
-echo $query | jq -r -M '.[] .meanings[].definitions[].definition'
+echo "$query" | jq -r -M '.[] .meanings[].definitions[].definition'

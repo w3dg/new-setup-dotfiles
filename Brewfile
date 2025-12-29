@@ -1,55 +1,61 @@
-aria2
-atuin
-bat
-bun
-cmatrix
-cowsay
-dust
-dysk
-entr
-exiftool
-eza
-fastfetch
-fd
-fend
-ffmpeg
-fnm
-fortune
-gh
-gifski
-git-delta
-glow
-go
-gum
-hexyl
-hugo
-hyperfine
-imagemagick
-imgcat
-lazydocker
-lazygit
-licensor
-lolcat
-mdbook
-mypy
-numi-cli
-pandoc
-pastel
-ripgrep
-ruff
-sevenzip
-shellcheck
-spark
-speedtest-cli
-starship
-tealdeer
-tinymist
-tokei
-trash-cli
-typst
-uv
-valgrind
-whois
-xh
-yt-dlp
-zoxide
+tap "danielgatis/imgcat"
+tap "delphinus/sfmono-square"
+tap "jandedobbeleer/oh-my-posh"
+tap "jesseduffield/lazydocker"
+tap "nikolaeu/numi"
+tap "oven-sh/bun"
+brew "aria2"
+brew "atuin"
+brew "bat"
+brew "cmatrix"
+brew "cowsay"
+brew "dust"
+brew "dysk"
+brew "entr"
+brew "exiftool"
+brew "eza"
+brew "fastfetch"
+brew "fd"
+brew "fend"
+brew "ffmpeg"
+brew "fnm"
+brew "fortune"
+brew "gh"
+brew "gifski"
+brew "git-delta"
+brew "glow"
+brew "go"
+brew "gum"
+brew "hexyl"
+brew "hugo"
+brew "hyperfine"
+brew "imagemagick"
+brew "lazygit"
+brew "licensor"
+brew "lolcat"
+brew "mdbook"
+brew "mypy"
+brew "pandoc"
+brew "pastel"
+brew "ripgrep"
+brew "ruff"
+brew "sevenzip"
+brew "shellcheck"
+brew "spark"
+brew "speedtest-cli"
+brew "starship"
+brew "tealdeer"
+brew "tinymist"
+brew "tokei"
+brew "trash-cli"
+brew "typst"
+brew "uv"
+brew "valgrind"
+brew "whois"
+brew "xh"
+brew "yt-dlp"
+brew "zoxide"
+brew "danielgatis/imgcat/imgcat"
+brew "jesseduffield/lazydocker/lazydocker"
+brew "nikolaeu/numi/numi-cli"
+brew "oven-sh/bun/bun"

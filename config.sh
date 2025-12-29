@@ -61,7 +61,8 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 BEFORE_ULIMIT_CHANGE=$(ulimit -n)
 ulimit -n 65535
-xargs brew install < "$BASEDIR/Brewfile"
+# xargs brew install < "${BASEDIR}/Brewfile"
+brew bundle "${BASEDIR}/Brewfile"
 ulimit -n "$BEFORE_ULIMIT_CHANGE"
 
 # Set bat themes https://github.com/catppuccin/bat

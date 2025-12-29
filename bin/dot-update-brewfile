@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+rm Brewfile 2>/dev/null
+# Only Get information about taps and formulae, no vscode, go, cargo etc.
+brew bundle dump --brews --taps

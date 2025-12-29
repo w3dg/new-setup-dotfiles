@@ -4,7 +4,7 @@ IFS=$(echo -en "\n\b")
 
 ### ARCHIVE EXTRACTION
 # usage: ex <file>
-function ex {
+ex() {
  if [ -z "$1" ]; then
     # display usage if no parameters given
     echo "Usage: ex <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz>"
@@ -256,11 +256,17 @@ update_global_npm_packages() {
     npm list -g | awk '{ print $2}' | sed -E "s/@[0-9]+\.[0-9]+\.[0-9]+//g" | xargs npm i -g
 }
 
+# Get your weather information
+weather() {
+    /usr/bin/env curl "wttr.in/${1}"
+}
+
+
 # EXPERIMENTING!!
 
 # c is a shell function that attempts to expand to cd to relative or
 # absolute paths, otherwise trying zoxide for jumping
-function c() {
+c() {
     if [ $# -eq 0 ]; then
         # No arguments → just cd to $HOME
         cd ~ || return
@@ -284,13 +290,13 @@ function c() {
     fi
 }
 
-function trim_zsh_history() {
+trim_zsh_history() {
     # Backup first
     cp ~/.zsh_history ~/.zsh_history.backup
     cat -n ~/.zsh_history | sort -t ';' -k 2 -k 1n | uniq -f 1 | sort -n | cut -f 2- > ~/.zsh_history.tmp && mv ~/.zsh_history.tmp ~/.zsh_history
 }
 
-function trim_bash_history() {
+trim_bash_history() {
     # Backup first
     cp ~/.bash_history ~/.bash_history.backup
     # Remove duplicates (keeps last occurrence)

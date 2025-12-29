@@ -60,9 +60,6 @@ alias wget='aria2c'
 # Public facing IP Address
 alias ipe='curl ipinfo.io/ip'
 
-# Get your weather information
-alias weather='curl wttr.in/'
-
 # Custom Program Aliases
 # reveal-md (see npm)
 alias reveal-md="reveal-md --theme night --highlight-theme hybrid --port 1337 --w --css style.css"

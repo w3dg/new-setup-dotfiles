@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
-
 BACKUP=backup-$(hostname)-$(date --iso-8601).tar.gz
 DIR=$1
 DIR_TO_BACKUP=${DIR:=.}
-
 tar --create -v --gzip --preserve-permissions -f "$BACKUP" \
 	--exclude="$BACKUP" \
 	--exclude="*/venv" \
 	--exclude="*/.venv" \
 	--exclude="*/.next" \
+	--exclude="*/.bun" \
+	--exclude="*/.pnpm" \
 	--exclude="*/node_modules" \
 	--exclude="*/dist" \
 	--exclude="*/build" \
@@ -61,19 +61,48 @@ tar --create -v --gzip --preserve-permissions -f "$BACKUP" \
 	--exclude=".zoom" \
 	--exclude=".zsh" \
 	--exclude=".yarn" \
-	$DIR_TO_BACKUP
+	--exclude=".config/google-chrome" \
+	--exclude=".config/chromium" \
+	--exclude=".config/brave" \
+	--exclude=".config/BraveSoftware" \
+	--exclude=".config/librewolf" \
+	--exclude=".config/firefox" \
+	--exclude=".config/vivaldi" \
+	--exclude=".config/opera" \
+	--exclude=".config/microsoft-edge" \
+	--exclude=".mozilla" \
+	--exclude=".config/Code/Cache" \
+	--exclude=".config/Code/CachedData" \
+	--exclude=".config/Code/logs" \
+	--exclude=".config/Slack/Cache" \
+	--exclude=".config/discord/Cache" \
+	--exclude=".android" \
+	--exclude=".gradle" \
+	--exclude=".m2" \
+	--exclude=".nuget" \
+	--exclude=".conda" \
+	--exclude=".anaconda" \
+	--exclude="__pycache__" \
+	--exclude="*.pyc" \
+	--exclude=".git/objects" \
+	--exclude="*.log" \
+	--exclude="*.tmp" \
+	--exclude="*.temp" \
+	--exclude=".steam" \
+	--exclude=".PlayOnLinux" \
+	--exclude="snap" \
+	"$DIR_TO_BACKUP"
 
 while true; do
     read -r -p "Do you wish to encrypt with GPG (y/n): " answer
     case $answer in
-        [Yy]* ) gpg --symmetric --cipher-algo AES256 $BACKUP; BACKUP=$BACKUP.gpg break;;
+        [Yy]* ) gpg --symmetric --cipher-algo AES256 "$BACKUP"; BACKUP="${BACKUP}.gpg"; break;;
         [Nn]* ) break;;
         * ) echo "Please answer Y or N.";;
     esac
 done
 
 # To get back from backup
-
 # $ EXTRACTED=backup-test-2025-01-19T00-34-31.tar.gz
 # $ gpg --output $EXTRACTED --decrypt $EXTRACTED.gpg
 # $ tar xvf $EXTRACTED
@@ -81,8 +110,8 @@ done
 # Rsync it over to external source
 use_rsync() {
     read -p "Enter file path to copy the backup externally to: " -r DEST;
-    mkdir -p $DEST;
-    rsync --archive --human-readable --progress --partial $BACKUP $DEST;
+    mkdir -p "$DEST";
+    rsync --archive --human-readable --progress --partial "$BACKUP" "$DEST";
 }
 
 while true; do

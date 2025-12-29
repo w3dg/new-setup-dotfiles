@@ -4,6 +4,7 @@ set statusbar-h-padding 0
 set statusbar-v-padding 0
 set page-padding 1
 set selection-clipboard clipboard
+set recolor-reverse-video "false"
 map u scroll half-up
 map d scroll half-down
 map r reload
@@ -15,5 +16,6 @@ map [fullscreen] D toggle_page_mode
 map [fullscreen] r reload
 map [fullscreen] R rotate
 map [fullscreen] i recolor
+set font "inconsolata 11"
 
-include catppuccin-mocha
+include dark

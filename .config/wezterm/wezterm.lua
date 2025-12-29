@@ -5,7 +5,7 @@ local act = wezterm.action
 local current_theme = 'dark'
 
 local themes = {
-  light = 'Brewer (light) (terminal.sexy)',
+  light = 'dayfox',
   dark =  'Dark Pastel',
 }
 
@@ -34,6 +34,7 @@ config.color_scheme = themes["dark"]
 
 -- Font families with fallbacks
 config.font = wezterm.font_with_fallback {
+    'Hack Nerd Font Mono',
     'CodeNewRoman Nerd Font Mono',
     'JetBrainsMono Nerd Font Mono',
     'CaskaydiaCove Nerd Font Mono',
@@ -92,12 +93,6 @@ for _, v in ipairs({
 --   {"-", act.DecreaseFontSize},
 --   {"*", act.ResetFontSize}
 -- }) do table.insert(config.keys, {mods="ALT", key=v[1], action=v[2]}) end
-
--- Maximize on startup
-wezterm.on('gui-startup', function(cmd)
-  local tab, pane, window = mux.spawn_window(cmd or {})
-  window:gui_window():maximize()
-end)
 
 -- Mouse bindings
 config.mouse_bindings = {

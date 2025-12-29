@@ -8,6 +8,9 @@
 export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
 export ZSH="$HOME/.oh-my-zsh"
 # ZSH_THEME="robbyrussell"
 
@@ -229,4 +232,14 @@ elif [ $XDG_SESSION_TYPE = 'wayland' ]; then
   alias clip="wl-copy"
 fi
 
-[[ $PWD = $HOME ]] && [[ -f ~/todo.md ]] && glow ~/todo.md || true
+_showtodos() {
+    if [[ $PWD = $HOME && -f ~/todo.md ]]; then
+        valid_todos_len=$(grep -v '<!--' ~/todo.md | wc -l)
+
+        if [[ "$valid_todos_len" -ne 0 ]]; then
+            glow ~/todo.md
+        fi
+    fi
+}
+
+_showtodos

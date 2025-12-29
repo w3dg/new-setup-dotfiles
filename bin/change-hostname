@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+name="$1"
+
+if [[ -z "$name" ]]; then
+    echo "New hostname not given."
+    exit 1
+fi
+
+# Convert all spaces to hyphens
+# The syntax ${var//search/replace} replaces all occurrences
+name="${name// /-}"
+
+echo "Asking for privileges to change hostname to: $name"
+sudo hostnamectl set-hostname "$name"
+
+echo "Log out and back in to take effect."

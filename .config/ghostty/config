@@ -1,15 +1,14 @@
-theme = Mellow
+theme = Dark Pastel
 
-font-family = JetBrainsMono Nerd Font Mono
-font-size = 13
+font-family = Hack Nerd Font Mono
+font-size = 12
 font-feature = -calt
 
 background-opacity = 1
 unfocused-split-opacity = 0.8
 
 cursor-style = block
-cursor-style-blink = false
-shell-integration-features = no-cursor
+shell-integration-features = cursor,no-title
 scrollback-limit = 10000000
 bold-is-bright = true
 
@@ -24,3 +23,4 @@ keybind = alt+shift+minus=new_split:down
 keybind = alt+shift+plus=new_split:right
 keybind = ctrl+shift+w=close_surface
 
+gtk-titlebar-style = tabs

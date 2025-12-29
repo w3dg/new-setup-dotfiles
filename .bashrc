@@ -10,6 +10,9 @@ echo "Today is $(date +"%a, %F %T")"
 
 [[ -f ~/.dircolors ]] && eval "$(dircolors -b ~/.dircolors)"
 
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
 DIR_PREFIX="$HOME/.bash/"
 for file in "$DIR_PREFIX"/*.sh; do
     source "$file"

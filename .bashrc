@@ -78,8 +78,8 @@ PS1+='\[${PROMPT_COLORS[3]}\]\h '
 PS1+='\[${PROMPT_COLORS[2]}\]'"$(uname | tr '[:upper:]' '[:lower:]')"' '
 
 # cwd
-PS1+='\[${PROMPT_COLORS[5]}\]\w '
 
+PS1+='\[${PROMPT_COLORS[5]}\]\[${COLOR256[257]}\]\w\[${COLOR256[256]}\] '
 # optional git branch
 PS1+='$(branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null); [[ -n $branch ]] && echo "\[${PROMPT_COLORS[2]}\](\[${PROMPT_COLORS[3]}\]git:$branch\[${PROMPT_COLORS[2]}\]) ")'
 

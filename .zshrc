@@ -59,9 +59,8 @@ PROMPT+='%F{$SSH_COLOR}%m%f '
 # 4. uname of kernel
 PROMPT+='%F{120}${CACHED_ZONENAME}${CACHED_UNAME}%f '
 
-
 # 5. Current Working Dir
-PROMPT+='%F{217}%c%f '
+PROMPT+='%F{217}%B%c%b%f '
 
 # 6. Git Branch (populated by vcs_info in precmd)
 PROMPT+='${vcs_info_msg_0_}'

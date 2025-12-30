@@ -1,2 +1,12 @@
-#!/usr/bin/env bash
-free -h | awk '/^Mem/ {print $3 "/" $2}'
+#!/usr/bin/env node
+
+//Platform-independent memory usage
+var os = require('os');
+var free = os.freemem();
+var total = os.totalmem();
+var used = total - free;
+console.log('memory: %dmb / %dmb (%d%%)',
+    Math.round(used / 1024 / 1024),
+    Math.round(total / 1024 / 1024),
+    Math.round(used * 100 / total)
+ );

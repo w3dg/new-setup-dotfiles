@@ -10,10 +10,4 @@ npkill
 npm-check-updates
 npm
 pnpm
-reveal-md
-serve
-tldr
-ts-node
-typescript
-vercel
-yarn
+undollar

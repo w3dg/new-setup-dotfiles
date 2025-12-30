@@ -134,7 +134,7 @@ DISABLE_AUTO_TITLE="true"
 # source ~/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
 plugins=(
-    git
+    gitfast
     command-not-found
     zsh-autosuggestions
     fast-syntax-highlighting

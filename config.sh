@@ -181,3 +181,6 @@ export PATH=${GOPATH:=$HOME/go}/bin:$PATH # Add Go bin to path
 
 while read -r package; do go install "$package"; done < "$BASEDIR/go-binary-packages.txt"
 # golang.org/x/tools/cmd/{gopls,staticcheck} should be prompted to be installed from the go vscode extension anyways
+
+# Node Global Packages
+while read -r package; do npm i -g "$package"; done < "$BASEDIR/npm-global-packages.txt"

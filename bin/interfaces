@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+
+// List all IPv4 interfaces
+var os = require('os');
+var i = os.networkInterfaces();
+Object.keys(i).forEach(function(name) {
+    i[name].forEach(function(int) {
+        if (int.family === 'IPv4') {
+            console.log('%s: %s', name, int.address);
+        }
+    });
+});
+

@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+// Calculate CPU load / Core Count
+var os = require('os');
+var c = os.cpus().length;
+console.log(
+    os.loadavg().map(function(l) {
+        return l.toFixed(2);
+    }).join(' ')
+)

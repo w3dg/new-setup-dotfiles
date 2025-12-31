@@ -108,7 +108,7 @@ cp -r "$BASEDIR/micro" "$HOME/.config"
 # curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
 # enable fnm for session
-eval "$(fnm env --use-on-cd --shell zsh)"
+eval "$(fnm env --use-on-cd --shell bash)"
 LATEST_NODE_MAJOR=$(fnm ls-remote | tail -1 | tr -d v | cut -d. -f1)
 fnm install "$LATEST_NODE_MAJOR"
 

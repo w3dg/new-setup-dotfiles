@@ -10,8 +10,8 @@ DOTFILES_PRE_DIR=(.config/atuin .config/tmux)
 
 mkdir -p "$HOME"/.config
 for d in "${DOTFILES_PRE_DIR[@]}"; do
-    echo "Creating dir $d"
-    mkdir -p "$d"
+    echo "Creating dir ~/$d"
+    mkdir -p "${HOME:-~}/$d"
 done
 
 for dot in "${DOTFILES[@]}"; do

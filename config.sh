@@ -33,17 +33,14 @@ sudo apt install -y  git vim wget curl neovim
 bash "$BASEDIR"/link.sh
 
 install_nerd_font() {
-    base_dir=$(pwd)
     font_name="$1"
     curl -OLs "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/${font_name}.tar.xz"
-    mv "${base_dir}/${font_name}.tar.xz" /tmp
-    cd /tmp || echo "failed to go to /tmp" && return
 
     tar xvf "${font_name}.tar.xz"
 
     sudo mv ./*ttf /usr/share/fonts/truetype 2>/dev/null
     sudo mv ./*otf /usr/share/fonts/opentype 2>/dev/null
-    rm "/tmp/${font_name}.tar.xz"
+    rm "${font_name}.tar.xz"
 }
 
 if cd /tmp ; then

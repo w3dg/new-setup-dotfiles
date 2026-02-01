@@ -36,14 +36,26 @@ if [ $? -ne 0 ] || [ -z $selected_commit_type ]; then
 fi
 final_commit_msg=$selected_commit_type
 
+check_multiple_vals() {
+    if [ $# -gt 1 ]; then
+        return 1
+    else
+        return 0
+    fi
+}
+
 # Scope of the commit (optional)
 selected_scope=$(gum input --header="Scope of the commit (optional)")
+
 if [ $? -ne 0 ]; then
     exit
-elif [ -z $selected_scope ]; then
-    final_commit_msg="${final_commit_msg}"
-else
-    final_commit_msg="${final_commit_msg}(${selected_scope})"
+elif [ ! -z "$selected_scope" ]; then
+    if ! check_multiple_vals $selected_scope; then
+            echo "Scope cannot be of multiple words"
+            exit 1
+    else
+        final_commit_msg="${final_commit_msg}(${selected_scope})"
+    fi
 fi
 
 # Breaking change

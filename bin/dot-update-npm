@@ -3,4 +3,6 @@
 f="npm-global-packages.txt"
 rm "$f" 2>/dev/null
 
-npm list -g | sed -E -e 's|^/.*$||g' -e 's/├──//g' -e 's/└──//g' -e 's/@[0-9]+\.[0-9]+\.[0-9]+//g' -e 's/^ //g' | grep -v '^\s*$' > "$f"
+# list all the gloablly installed npm packages in parseable format
+# -p is parseable format
+npm list -g -p | awk -F'node_modules/' 'NF > 1 {print $2}' > "$f"

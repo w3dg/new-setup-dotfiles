@@ -11,16 +11,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-export ZSH="$HOME/.oh-my-zsh"
-# ZSH_THEME="robbyrussell"
-
-autoload -Uz vcs_info
 autoload -Uz add-zsh-hook
-setopt prompt_subst
-zstyle ':vcs_info:git:*' formats '%F{69}git:(%F{1}%b%F{69})%f '
-zstyle ':vcs_info:git:*' actionformats '%F{69}git:(%F{1}%b%F{69}|%F{1}%a%F{69})%f '
-readonly CACHED_UNAME=$(uname | tr '[:upper:]' '[:lower:]')
-readonly CACHED_ZONE=$(zonename 2>/dev/null | grep -q "^global$" && echo "GZ:" || echo "")
 
 _precmd_main() {
     # Update Window Title
@@ -37,44 +28,12 @@ _precmd_main() {
     else
         SSH_COLOR="210"
     fi
-
-    # Refresh VCS info
-    vcs_info
 }
 add-zsh-hook precmd _precmd_main
 
-# Construct the prompt
-# [(exit code)] <user> <hostname> <uname> <cwd> [git branch] <$|#>
-
-# 1. Exit code: Only shows if non-zero: (status)
-PROMPT='%(?..%F{1}%? %f)'
-
-# 2. Username: Red if root, otherwise your Color 69
-# %n is username, %B for bold. Ternary %# checks if root (#) or user (%)
-PROMPT+='%F{%(#..69)}%B%n%b%f '
-
-# 3. Hostname (different color if in ssh session)
-PROMPT+='%F{$SSH_COLOR}%m%f '
-
-# 4. uname of kernel
-PROMPT+='%F{120}${CACHED_ZONENAME}${CACHED_UNAME}%f '
-
-# 5. Current Working Dir
-PROMPT+='%F{217}%B%c%b%f '
-
-# 6. Git Branch (populated by vcs_info in precmd)
-PROMPT+='${vcs_info_msg_0_}'
-
-# 7. Prompt Character ($ for user, # for root) and reset
-PROMPT+='%F{39}%#%f '
-
-# ZSH_THEME=""
-# fpath+=($HOME/.zsh/pure)
-# autoload -U promptinit; promptinit
-# prompt pure
-
-# ZSH_THEME=""
-# eval "$(starship init zsh)"
+export ZSH="$HOME/.oh-my-zsh"
+# ZSH_THEME="robbyrussell"
+eval "$(starship init zsh)"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -136,6 +95,7 @@ DISABLE_AUTO_TITLE="true"
 plugins=(
     gitfast
     command-not-found
+    colored-man-pages
     zsh-autosuggestions
     fast-syntax-highlighting
 )
@@ -148,6 +108,8 @@ setopt HIST_IGNORE_ALL_DUPS    # Remove older duplicates
 setopt HIST_EXPIRE_DUPS_FIRST  # Expire duplicates first when trimming history
 setopt HIST_FIND_NO_DUPS       # Don't show duplicates in search
 setopt HIST_SAVE_NO_DUPS       # Don't write duplicates to file
+export HISTSIZE=1000000
+export SAVEHIST=1000000
 
 source $ZSH/oh-my-zsh.sh
 

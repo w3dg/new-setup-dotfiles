@@ -18,9 +18,8 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 export PAGER='less'
 
-# set bat as man pager
-export MANROFFOPT="-c"
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# use colors in man pages
+export MANPAGER="less -R --use-color -Dd+r -Du+b"
 
 # FZF
 export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'

@@ -113,3 +113,6 @@ alias copyparty="uv tool run copyparty"
 
 # Cloudflare Warp CLI
 alias warpon='warp-cli connect' warpoff='warp-cli disconnect'
+
+# get fastest mirrors with nala
+alias mirror="sudo nala fetch"

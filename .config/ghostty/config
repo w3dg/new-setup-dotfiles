@@ -12,7 +12,6 @@ shell-integration-features = cursor,no-title
 scrollback-limit = 10000000
 bold-is-bright = true
 
-window-padding-x = 2,0
 window-padding-y = 0,2
 window-padding-color = background
 

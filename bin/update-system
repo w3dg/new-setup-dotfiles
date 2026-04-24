@@ -136,8 +136,8 @@ ulimit -n "$BEFORE_ULIMIT_CHANGE"
 print_bold_green "Running global node modules update"
 npm list -g -p | awk -F'node_modules/' 'NF > 1 {print $2}' | xargs npm i -g
 
-print_bold_yellow "Running global cargo packages update"
-cargo install --list | awk '/v/ {print $1}' | xargs cargo install
+# print_bold_yellow "Running global cargo packages update"
+# cargo install --list | awk '/v/ {print $1}' | xargs cargo install
 
 print_bold_blue "Running go cli tools update"
 # BASEDIR=$HOME/new-setup-dotfiles
